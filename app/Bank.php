@@ -32,4 +32,9 @@ class Bank extends Authenticatable
     {
         return $this->hasMany('App\Loan');
     }
+
+    public function balances()
+    {
+      return $this->hasMany('App\Balance');
+    }
 }

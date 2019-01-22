@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Loan;
+use Alert;
 use Auth;
+
 
 class LoanController extends Controller
 {
@@ -56,6 +58,8 @@ class LoanController extends Controller
             $loan->user_id = Auth::user()->id;
 
             $loan->save();
+
+            alert()->success('Loan has been created', 'Successful!');
             return redirect()->route('students.loans');
 
 

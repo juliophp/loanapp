@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 Auth::routes();
 
@@ -23,6 +23,7 @@ Route::get('students/loans/{id}', 'StudentLoanController@show')->name('student.l
 
 Route::prefix('bank')->group(function() {
   Route::get('/', 'BankController@index')->name('bank.index');
+  Route::get('/bvn/{id}/', 'BankController@loadbvn')->name('bvn.load');
   Route::post('/bvn/{id}/{bvn}', 'BankController@verifybvn')->name('bvn.verify');
   Route::get('loans/granted','BankLoanController@granted')->name('bank.loans.granted');
   Route::resource('loans', 'BankLoanController', ['as' => 'bank', 'only' => ['index', 'show', 'update']  ]);
@@ -56,6 +57,8 @@ Route::prefix('admin')->group(function() {
   Route::resource('universities','AdminUniversityController', ['as' => 'admin']);
   Route::resource('banks','AdminBankController', ['as' => 'admin']);
   Route::resource('donors','AdminDonorController', ['as' => 'admin']);
+  Route::resource('wallet','BalanceController', ['as' => 'admin', 'only' => ['create', 'index', 'store']]);
+
   Route::post('logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::get('login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

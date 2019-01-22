@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
 use App\User;
 use App\University;
 use GuzzleHttp\Client;
@@ -10,7 +11,7 @@ use GuzzleHttp\Client;
 
 class StudentController extends Controller
 {
-  
+
   /**
    * Display a listing of the resource.
    *
@@ -131,6 +132,7 @@ class StudentController extends Controller
 
 
       //
+      alert()->success('User have been updated', 'Successful');
       return redirect()->route('home');
 
   }

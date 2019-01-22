@@ -42,31 +42,31 @@
           </div>
           <!-- /.box -->
         </div>
-      <div class="col-md-6">
-        <!-- general form elements -->
-        <div class="box box-success">
-          <div class="box-header with-border">
-            <h3 class="box-title">Upload Grant Details</h3>
-          </div>
-          <!-- /.box-header -->
-          <!-- form start -->
-          <form action="{{ route('donor.students.submit') }}" method="post" enctype="multipart/form-data" role="form">
-            @csrf
-            <div class="box-body">
-              <div class="form-group">
-                <label for="file">File input</label>
-                <input type="file" name="loanfile" id="file">
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Upload Grant Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form action="{{ route('donor.students.submit') }}" method="post" enctype="multipart/form-data" role="form">
+              @csrf
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="file">File input</label>
+                  <input type="file" name="loanfile" id="file">
 
-                <p class="help-block">Upload Loan Details</p>
+                  <p class="help-block">Upload Loan Details</p>
+                </div>
               </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-              <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-          </form>
-        </div>
-        <!-- /.box -->
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
     </div>
       <!-- /.row -->
     </section>

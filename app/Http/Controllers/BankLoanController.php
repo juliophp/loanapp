@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Loan;
+use Alert;
 use Auth;
 
 class BankLoanController extends Controller
@@ -78,6 +79,7 @@ class BankLoanController extends Controller
     public function granted()
     {
         $loans = Auth::user()->loans()->get();
+        alert()->success('Loan granted to user.');
         return view('banks.grant', ['loans' => $loans]);
     }
 
