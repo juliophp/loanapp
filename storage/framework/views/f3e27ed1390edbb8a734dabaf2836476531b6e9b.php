@@ -300,7 +300,7 @@
                    <div class="form-group mb-0">
                        <div class="col-md-8">
                            <button type="submit" class="btn btn-blue">
-                               <?php echo e(__('Update Information')); ?>
+                               <?php echo e(__('Save')); ?>
 
                            </button>
                        </div>
@@ -436,7 +436,7 @@
                     <div class="form-group mb-0">
                         <div class="col-md-8">
                             <button type="submit" class="btn btn-blue">
-                                <?php echo e(__('Update Information')); ?>
+                                <?php echo e(__('Save')); ?>
 
                             </button>
                         </div>
@@ -557,7 +557,7 @@
                       <label for="firstname" class="col-md-4 col-form-label"><?php echo e(__('Firstname:')); ?></label>
 
                       <div class="col-md-8">
-                          <input id="firstname" type="text" class="form-control<?php echo e($errors->has('gfirstname') ? ' is-invalid' : ''); ?>" name="gfirstname" value="<?php echo e($std->guarantor->firstname); ?>" required autofocus>
+                          <input id="firstname" type="text" class="form-control<?php echo e($errors->has('gfirstname') ? ' is-invalid' : ''); ?>" name="gfirstname" value="<?php if($std->guarantor): ?><?php echo e($std->guarantor->firstname); ?><?php endif; ?>" required autofocus>
 
                           <?php if($errors->has('firstname')): ?>
                               <span class="invalid-feedback" role="alert">
@@ -571,7 +571,7 @@
                       <label for="lastname" class="col-md-4 col-form-label "><?php echo e(__('Lastname:')); ?></label>
 
                       <div class="col-md-8">
-                          <input id="lastname" type="text" class="form-control<?php echo e($errors->has('glastname') ? ' is-invalid' : ''); ?>" name="glastname" value="<?php echo e($std->guarantor->lastname); ?>" required autofocus>
+                          <input id="lastname" type="text" class="form-control<?php echo e($errors->has('glastname') ? ' is-invalid' : ''); ?>" name="glastname" value="<?php if($std->guarantor): ?><?php echo e($std->guarantor->lastname); ?><?php endif; ?>" required autofocus>
 
                           <?php if($errors->has('lastname')): ?>
                               <span class="invalid-feedback" role="alert">
@@ -589,7 +589,7 @@
                       <label for="phone" class="col-md-4 col-form-label "><?php echo e(__('Phone number:')); ?></label>
 
                       <div class="col-md-8">
-                          <input id="phone" type="text" class="form-control<?php echo e($errors->has('gphone') ? ' is-invalid' : ''); ?>" name="gphone" value="<?php echo e($std->guarantor->phone); ?>" required autofocus>
+                          <input id="phone" type="text" class="form-control<?php echo e($errors->has('gphone') ? ' is-invalid' : ''); ?>" name="gphone" value="<?php if($std->guarantor): ?><?php echo e($std->guarantor->phone); ?><?php endif; ?>" required autofocus>
 
                           <?php if($errors->has('phone')): ?>
                               <span class="invalid-feedback" role="alert">
@@ -603,7 +603,7 @@
                       <label for="email" class="col-md-4 col-form-label "><?php echo e(__('E-Mail Address')); ?></label>
 
                       <div class="col-md-8">
-                          <input id="email" type="email" class="form-control<?php echo e($errors->has('gemail') ? ' is-invalid' : ''); ?>" name="gemail" value="<?php echo e($std->guarantor->email); ?>" required>
+                          <input id="email" type="email" class="form-control<?php echo e($errors->has('gemail') ? ' is-invalid' : ''); ?>" name="gemail" value="<?php if($std->guarantor): ?><?php echo e($std->guarantor->email); ?><?php endif; ?>" required>
 
                           <?php if($errors->has('email')): ?>
                               <span class="invalid-feedback" role="alert">
@@ -617,7 +617,7 @@
                       <label for="occupation" class="col-md-4 col-form-label "><?php echo e(__('Occupation:')); ?></label>
 
                       <div class="col-md-8">
-                          <input id="occupation" type="text" class="form-control<?php echo e($errors->has('goccupation') ? ' is-invalid' : ''); ?>" name="goccupation" value="<?php echo e($std->guarantor->occupation); ?>" required autofocus>
+                          <input id="occupation" type="text" class="form-control<?php echo e($errors->has('goccupation') ? ' is-invalid' : ''); ?>" name="goccupation" value="<?php if($std->guarantor): ?><?php echo e($std->guarantor->occupation); ?><?php endif; ?>" required autofocus>
 
                           <?php if($errors->has('occupation')): ?>
                               <span class="invalid-feedback" role="alert">
@@ -631,7 +631,7 @@
                       <label for="address" class="col-md-4 col-form-label "><?php echo e(__('Address:')); ?></label>
 
                       <div class="col-md-8">
-                          <textarea id="address" type="text" class="form-control<?php echo e($errors->has('gaddress') ? ' is-invalid' : ''); ?>" name="gaddress" required autofocus><?php echo e($std->guarantor->email); ?></textarea>
+                          <textarea id="address" type="text" class="form-control<?php echo e($errors->has('gaddress') ? ' is-invalid' : ''); ?>" name="gaddress" required autofocus><?php if($std->guarantor): ?><?php echo e($std->guarantor->email); ?><?php endif; ?></textarea>
 
                           <?php if($errors->has('address')): ?>
                               <span class="invalid-feedback" role="alert">
@@ -644,7 +644,7 @@
                   <div class="form-group mb-0">
                       <div class="col-md-8">
                           <button type="submit" class="btn btn-blue">
-                              <?php echo e(__('Update Information')); ?>
+                              <?php echo e(__('Save')); ?>
 
                           </button>
                       </div>

@@ -556,7 +556,7 @@
                       <label for="firstname" class="col-md-4 col-form-label">{{ __('Firstname:') }}</label>
 
                       <div class="col-md-8">
-                          <input id="firstname" type="text" class="form-control{{ $errors->has('gfirstname') ? ' is-invalid' : '' }}" name="gfirstname" value="{{ $std->guarantor->firstname }}" required autofocus>
+                          <input id="firstname" type="text" class="form-control{{ $errors->has('gfirstname') ? ' is-invalid' : '' }}" name="gfirstname" value="@if($std->guarantor){{ $std->guarantor->firstname }}@endif" required autofocus>
 
                           @if ($errors->has('firstname'))
                               <span class="invalid-feedback" role="alert">
@@ -570,7 +570,7 @@
                       <label for="lastname" class="col-md-4 col-form-label ">{{ __('Lastname:') }}</label>
 
                       <div class="col-md-8">
-                          <input id="lastname" type="text" class="form-control{{ $errors->has('glastname') ? ' is-invalid' : '' }}" name="glastname" value="{{ $std->guarantor->lastname }}" required autofocus>
+                          <input id="lastname" type="text" class="form-control{{ $errors->has('glastname') ? ' is-invalid' : '' }}" name="glastname" value="@if($std->guarantor){{ $std->guarantor->lastname }}@endif" required autofocus>
 
                           @if ($errors->has('lastname'))
                               <span class="invalid-feedback" role="alert">
@@ -588,7 +588,7 @@
                       <label for="phone" class="col-md-4 col-form-label ">{{ __('Phone number:') }}</label>
 
                       <div class="col-md-8">
-                          <input id="phone" type="text" class="form-control{{ $errors->has('gphone') ? ' is-invalid' : '' }}" name="gphone" value="{{ $std->guarantor->phone }}" required autofocus>
+                          <input id="phone" type="text" class="form-control{{ $errors->has('gphone') ? ' is-invalid' : '' }}" name="gphone" value="@if($std->guarantor){{ $std->guarantor->phone }}@endif" required autofocus>
 
                           @if ($errors->has('phone'))
                               <span class="invalid-feedback" role="alert">
@@ -602,7 +602,7 @@
                       <label for="email" class="col-md-4 col-form-label ">{{ __('E-Mail Address') }}</label>
 
                       <div class="col-md-8">
-                          <input id="email" type="email" class="form-control{{ $errors->has('gemail') ? ' is-invalid' : '' }}" name="gemail" value="{{ $std->guarantor->email }}" required>
+                          <input id="email" type="email" class="form-control{{ $errors->has('gemail') ? ' is-invalid' : '' }}" name="gemail" value="@if($std->guarantor){{ $std->guarantor->email }}@endif" required>
 
                           @if ($errors->has('email'))
                               <span class="invalid-feedback" role="alert">
@@ -616,7 +616,7 @@
                       <label for="occupation" class="col-md-4 col-form-label ">{{ __('Occupation:') }}</label>
 
                       <div class="col-md-8">
-                          <input id="occupation" type="text" class="form-control{{ $errors->has('goccupation') ? ' is-invalid' : '' }}" name="goccupation" value="{{ $std->guarantor->occupation }}" required autofocus>
+                          <input id="occupation" type="text" class="form-control{{ $errors->has('goccupation') ? ' is-invalid' : '' }}" name="goccupation" value="@if($std->guarantor){{ $std->guarantor->occupation }}@endif" required autofocus>
 
                           @if ($errors->has('occupation'))
                               <span class="invalid-feedback" role="alert">
@@ -630,7 +630,7 @@
                       <label for="address" class="col-md-4 col-form-label ">{{ __('Address:') }}</label>
 
                       <div class="col-md-8">
-                          <textarea id="address" type="text" class="form-control{{ $errors->has('gaddress') ? ' is-invalid' : '' }}" name="gaddress" required autofocus>{{ $std->guarantor->email }}</textarea>
+                          <textarea id="address" type="text" class="form-control{{ $errors->has('gaddress') ? ' is-invalid' : '' }}" name="gaddress" required autofocus>@if($std->guarantor){{ $std->guarantor->email }}@endif</textarea>
 
                           @if ($errors->has('address'))
                               <span class="invalid-feedback" role="alert">

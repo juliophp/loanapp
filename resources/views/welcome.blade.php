@@ -246,8 +246,8 @@
                   </div>
                   <div class="col-md-3 col-sm-3 col-12 z-index">
                      <div class="number-bloc">
-                        <span>70</span>
-                        <p>Our Dedicated Support</p>
+                        <span>134</span>
+                        <p>Universities</p>
                      </div>
                   </div>
                </div>

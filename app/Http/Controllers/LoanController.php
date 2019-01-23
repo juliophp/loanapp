@@ -46,15 +46,11 @@ class LoanController extends Controller
               'loanamount'=>'required|string',
               'loanpurpose' => 'required|string',
               'loanyear' => 'required|string',
-              'bank'=> 'required|string',
-              'accountnumber' => 'required|string',
             ]);
             $loan = new Loan();
             $loan->loanamount = $request->loanamount;
             $loan->loanpurpose = $request->loanpurpose;
             $loan->loanyear = $request->loanyear;
-            $loan->bank = $request->bank;
-            $loan->accountnumber = $request->accountnumber;
             $loan->user_id = Auth::user()->id;
 
             $loan->save();
