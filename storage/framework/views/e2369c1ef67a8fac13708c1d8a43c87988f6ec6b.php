@@ -59,16 +59,19 @@
                     <ul class="navbar-nav ml-auto">
                       <?php if(auth()->guard()->guest()): ?>
                        <li class="nav-item active">
-                          <a data-scroll="" class="nav-link section-scroll" href="#home">Home</a>
+                          <a data-scroll="" class="nav-link section-scroll" href="<?php echo e(route('index')); ?>#home">Home</a>
                        </li>
                        <li class="nav-item">
-                          <a data-scroll="" class="nav-link section-scroll" href="#about-tab">About</a>
+                          <a data-scroll="" class="nav-link section-scroll" href="<?php echo e(route('index')); ?>#about-tab">About</a>
                        </li>
                        <li class="nav-item">
-                          <a data-scroll="" class="nav-link section-scroll" href="#services-d">Login</a>
+                          <a data-scroll="" class="nav-link section-scroll" href="<?php echo e(route('index')); ?>#services-d">Services</a>
                        </li>
                        <li>
-                          <a data-scroll="" href="#testimonials" class="nav-link section-scroll">Testimonials</a>
+                          <a data-scroll="" href="<?php echo e(route('index')); ?>#testimonials" class="nav-link section-scroll">Testimonials</a>
+                       </li>
+                       <li>
+                          <a data-scroll="" href="<?php echo e(route('login')); ?>" class="nav-link section-scroll">Login</a>
                        </li>
                        <li>
                           <div class="connect-block">
@@ -238,6 +241,9 @@
          </div>
       </footer>
       <!--Footer -->
+      <script src="<?php echo e(asset('sweetalert/dist/sweetalert.min.js')); ?>"></script>
+      <!-- Include this after the sweet alert js file -->
+      <?php echo $__env->make('sweet::alert', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
       <!-- jQuery -->
       <script src="<?php echo e(asset('js/jquery-2.1.1.min.js')); ?>"></script>
       <!-- Bootstrap Plugins -->

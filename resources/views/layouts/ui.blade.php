@@ -59,16 +59,19 @@
                     <ul class="navbar-nav ml-auto">
                       @guest
                        <li class="nav-item active">
-                          <a data-scroll="" class="nav-link section-scroll" href="#home">Home</a>
+                          <a data-scroll="" class="nav-link section-scroll" href="{{ route('index')}}#home">Home</a>
                        </li>
                        <li class="nav-item">
-                          <a data-scroll="" class="nav-link section-scroll" href="#about-tab">About</a>
+                          <a data-scroll="" class="nav-link section-scroll" href="{{ route('index')}}#about-tab">About</a>
                        </li>
                        <li class="nav-item">
-                          <a data-scroll="" class="nav-link section-scroll" href="#services-d">Login</a>
+                          <a data-scroll="" class="nav-link section-scroll" href="{{ route('index')}}#services-d">Services</a>
                        </li>
                        <li>
-                          <a data-scroll="" href="#testimonials" class="nav-link section-scroll">Testimonials</a>
+                          <a data-scroll="" href="{{ route('index')}}#testimonials" class="nav-link section-scroll">Testimonials</a>
+                       </li>
+                       <li>
+                          <a data-scroll="" href="{{route('login')}}" class="nav-link section-scroll">Login</a>
                        </li>
                        <li>
                           <div class="connect-block">
@@ -238,6 +241,9 @@
          </div>
       </footer>
       <!--Footer -->
+      <script src="{{asset('sweetalert/dist/sweetalert.min.js')}}"></script>
+      <!-- Include this after the sweet alert js file -->
+      @include('sweet::alert')
       <!-- jQuery -->
       <script src="{{asset('js/jquery-2.1.1.min.js')}}"></script>
       <!-- Bootstrap Plugins -->

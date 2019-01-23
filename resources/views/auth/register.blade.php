@@ -1,9 +1,12 @@
 @extends('layouts.ui')
 
 @section('content')
-<div class="container padd-80">
+<div class="container padd-40">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">{{ __('Register') }}</div>
+              <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -160,6 +163,9 @@
                         </div>
                     </form>
                 </div>
+              </div>
+            </div>
+
 
     </div>
 </div>

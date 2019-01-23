@@ -12,6 +12,7 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Donor' => $baseDir . '/app/Donor.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Guarantor' => $baseDir . '/app/Guarantor.php',
     'App\\Http\\Controllers\\AdminBankController' => $baseDir . '/app/Http/Controllers/AdminBankController.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\AdminDonorController' => $baseDir . '/app/Http/Controllers/AdminDonorController.php',

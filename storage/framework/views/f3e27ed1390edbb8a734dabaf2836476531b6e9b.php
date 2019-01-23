@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<div class="container padd-80">
+<div class="container padd-20">
     <div class="row">
         <div class="col-md-12">
           <div class="tabs-content">
@@ -18,13 +18,13 @@
                 <a class="nav-link" id="guarantor-tab" data-toggle="tab" href="#guarantor" role="tab" aria-controls="guarantor" aria-selected="false">Guarantor Information</a>
              </li>
           </ul>
-          <div class="tab-content" id="myTabContent">
+          <div class="tab-content text-left" id="myTabContent">
              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                <form method="POST" action="<?php echo e(route('students.update', Auth::user()->id)); ?>">
                    <?php echo csrf_field(); ?>
                    <?php echo method_field('patch'); ?>
 
-                   <div class="form-group">
+                   <div class="form-group ">
                        <label for="firstname" class="col-md-4 col-form-label"><?php echo e(__('Firstname:')); ?></label>
 
                        <div class="col-md-8">
@@ -190,6 +190,112 @@
                                <?php endif; ?>
                            </div>
                        </div>
+                       <div class="form-group">
+                           <label for="accountnumber" class="col-md-4 col-form-label"><?php echo e(__('Account Number:')); ?></label>
+
+                           <div class="col-md-8">
+                               <input id="accountnumber" type="number" class="form-control<?php echo e($errors->has('accountnumber') ? ' is-invalid' : ''); ?>" name="accountnumber" value="<?php echo e(old('accountnumber')); ?>" required autofocus>
+
+                               <?php if($errors->has('accountnumber')): ?>
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong><?php echo e($errors->first('accountnumber')); ?></strong>
+                                   </span>
+                               <?php endif; ?>
+                           </div>
+                       </div>
+
+                       <div class="form-group">
+                           <label for="bank" class="col-md-4 col-form-label"><?php echo e(__('Bank:')); ?></label>
+
+                           <div class="col-md-8">
+                               <select id="bank" class="form-control<?php echo e($errors->has('bank') ? ' is-invalid' : ''); ?>" name="bank" >
+                                 <option value="">---</option>
+                                 <option value="Access Bank">Access Bank</option>
+                                  <option value="Accessmobile">Accessmobile</option>
+                                  <option value="Aso Savings And Loans">Aso Savings And Loans</option>
+                                  <option value="Cellulant">Cellulant</option>
+                                  <option value="Central Bank Of Nigeria">Central Bank Of Nigeria</option>
+                                  <option value="Citibank">Citibank</option>
+                                  <option value="Coronation Merchant Bank">Coronation Merchant Bank</option>
+                                  <option value="Corporetti">Corporetti</option>
+                                  <option value="Covenant Microfinance Bank">Covenant Microfinance Bank</option>
+                                  <option value="Diamond Bank">Diamond Bank</option>
+                                  <option value="Eartholeum (qik Qik)">Eartholeum (qik Qik)</option>
+                                  <option value="Ecobank Nigeria">Ecobank Nigeria</option>
+                                  <option value="Ecomobile">Ecomobile</option>
+                                  <option value="Ekondo Microfinance Bank">Ekondo Microfinance Bank</option>
+                                  <option value="Enterprise Bank">Enterprise Bank</option>
+                                  <option value="Equitorial Trust Bank">Equitorial Trust Bank</option>
+                                  <option value="E-tranzact">E-tranzact</option>
+                                  <option value="Fbn M-money">Fbn M-money</option>
+                                  <option value="Fbn Mortgages">Fbn Mortgages</option>
+                                  <option value="Fets (my Wallet)">Fets (my Wallet)</option>
+                                  <option value="Fidelity Bank">Fidelity Bank</option>
+                                  <option value="Fidelity Mobile">Fidelity Mobile</option>
+                                  <option value="Finatrust Microfinance Bank">Finatrust Microfinance Bank</option>
+                                  <option value="First Bank Of Nigeria">First Bank Of Nigeria</option>
+                                  <option value="First City Monument Bank">First City Monument Bank</option>
+                                  <option value="First Inland Bank">First Inland Bank</option>
+                                  <option value="Fortis Microfinance Bank">Fortis Microfinance Bank</option>
+                                  <option value="Fortis Mobile">Fortis Mobile</option>
+                                  <option value="Fsdh">Fsdh</option>
+                                  <option value="Gt Mobile Money">Gt Mobile Money</option>
+                                  <option value="Guaranty Trust Bank">Guaranty Trust Bank</option>
+                                  <option value="Hedonmark">Hedonmark</option>
+                                  <option value="Heritage Bank">Heritage Bank</option>
+                                  <option value="Imperial Homes Mortgage Bank">Imperial Homes Mortgage Bank</option>
+                                  <option value="Intercontinental Bank">Intercontinental Bank</option>
+                                  <option value="Jaiz Bank">Jaiz Bank</option>
+                                  <option value="Jubilee Life">Jubilee Life</option>
+                                  <option value="Kegow">Kegow</option>
+                                  <option value="Keystone Bank">Keystone Bank</option>
+                                  <option value="Mainstreet Bank">Mainstreet Bank</option>
+                                  <option value="Mimoney (powered By Intellifin)">Mimoney (powered By Intellifin)</option>
+                                  <option value="M-kudi">M-kudi</option>
+                                  <option value="Monetize">Monetize</option>
+                                  <option value="Moneybox">Moneybox</option>
+                                  <option value="New Prudential Bank">New Prudential Bank</option>
+                                  <option value="Npf Mfb">Npf Mfb</option>
+                                  <option value="Oceanic Bank">Oceanic Bank</option>
+                                  <option value="Omoluabi Savings And Loans">Omoluabi Savings And Loans</option>
+                                  <option value="One Finance">One Finance</option>
+                                  <option value="Paga">Paga</option>
+                                  <option value="Page Mfbank">Page Mfbank</option>
+                                  <option value="Parallex">Parallex</option>
+                                  <option value="Parkway (ready Cash)">Parkway (ready Cash)</option>
+                                  <option value="Payattitude Online">Payattitude Online</option>
+                                  <option value="Paycom">Paycom</option>
+                                  <option value="Providus Bank">Providus Bank</option>
+                                  <option value="Safetrust Mortgage Bank">Safetrust Mortgage Bank</option>
+                                  <option value="Seed Capital Microfinance Bank">Seed Capital Microfinance Bank</option>
+                                  <option value="Skye Bank">Skye Bank</option>
+                                  <option value="Stanbic Ibtc Bank">Stanbic Ibtc Bank</option>
+                                  <option value="Stanbic Mobile">Stanbic Mobile</option>
+                                  <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                                  <option value="Sterling Bank">Sterling Bank</option>
+                                  <option value="Sterling Mobile">Sterling Mobile</option>
+                                  <option value="Suntrust">Suntrust</option>
+                                  <option value="Teasy Mobile">Teasy Mobile</option>
+                                  <option value="Trustbond">Trustbond</option>
+                                  <option value="U-mo">U-mo</option>
+                                  <option value="Union Bank Of Nigeria">Union Bank Of Nigeria</option>
+                                  <option value="United Bank For Africa">United Bank For Africa</option>
+                                  <option value="Unity Bank">Unity Bank</option>
+                                  <option value="Vfd Microfinance Bank">Vfd Microfinance Bank</option>
+                                  <option value="Visual Ict">Visual Ict</option>
+                                  <option value="Vtnetwork">Vtnetwork</option>
+                                  <option value="Wema Bank">Wema Bank</option>
+                                  <option value="Zenith Bank">Zenith Bank</option>
+                                  <option value="Zenith Mobile">Zenith Mobile</option>
+                               </select>
+
+                               <?php if($errors->has('bank')): ?>
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong><?php echo e($errors->first('bank')); ?></strong>
+                                   </span>
+                               <?php endif; ?>
+                           </div>
+                       </div>
 
                    <div class="form-group mb-0">
                        <div class="col-md-8">
@@ -206,7 +312,8 @@
                <form method="POST" action="<?php echo e(route('students.update', Auth::user()->id)); ?>">
                    <?php echo csrf_field(); ?>
                    <?php echo method_field('patch'); ?>
-                   <div class="form-group">
+
+                    <div class="form-group">
                        <label for="university" class="col-md-4 col-form-label"><?php echo e(__('University:')); ?></label>
                        <div class="col-md-8">
                            <select id="university" class="form-control <?php echo e($errors->has('university') ? 'is-invalid' : ''); ?>" name="university">
@@ -223,13 +330,39 @@
                        </div>
                    </div>
                     <div class="form-group">
+                      <label for="matricno" class="col-md-4 col-form-label "><?php echo e(__('Matric No / Jamb Reg. Number:')); ?></label>
+
+                      <div class="col-md-8">
+                          <input id="matricno" type="text" class="form-control<?php echo e($errors->has('matricno') ? ' is-invalid' : ''); ?>" name="matricno" value="<?php echo e($std->matricno); ?>" required>
+
+                          <?php if($errors->has('matricno')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('matricno')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="tuitionfee" class="col-md-4 col-form-label "><?php echo e(__('Annual Tuition:')); ?></label>
+
+                      <div class="col-md-8">
+                          <input id="tuitionfee" type="text" class="form-control<?php echo e($errors->has('tuitionfee') ? ' is-invalid' : ''); ?>" name="tuitionfee" value="<?php echo e($std->tuitionfee); ?>" required>
+
+                          <?php if($errors->has('tuitionfee')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('tuitionfee')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                    </div>
+                    <div class="form-group">
                         <label for="program" class="col-md-4 col-form-label "><?php echo e(__('Program:')); ?></label>
 
                         <div class="col-md-8">
                           <select id="program" class="form-control<?php echo e($errors->has('program') ? ' is-invalid' : ''); ?>" name="program" >
-                            <option value="bachelors">Bachelors</option>
-                            <option value="masters">Masters</option>
-                            <option value="posstgraduate">Post Graduate</option>
+                            <option value="Bachelors">Bachelors</option>
+                            <option value="Masters">Masters</option>
+                            <option value="Postgraduate">Post Graduate</option>
 
                           </select>
                             <?php if($errors->has('program')): ?>
@@ -249,6 +382,8 @@
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
+                            <option value="2022">2024</option>
+                            <option value="2023">2025</option>
 
 
                           </select>
@@ -414,7 +549,108 @@
                 </form>
               </div>
             <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
-              This tab is for guarantor Information just incase we might need it
+              <form method="POST" action="<?php echo e(route('students.update', Auth::user()->id)); ?>">
+                  <?php echo csrf_field(); ?>
+                  <?php echo method_field('patch'); ?>
+
+                  <div class="form-group ">
+                      <label for="firstname" class="col-md-4 col-form-label"><?php echo e(__('Firstname:')); ?></label>
+
+                      <div class="col-md-8">
+                          <input id="firstname" type="text" class="form-control<?php echo e($errors->has('gfirstname') ? ' is-invalid' : ''); ?>" name="gfirstname" value="<?php echo e($std->guarantor->firstname); ?>" required autofocus>
+
+                          <?php if($errors->has('firstname')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('firstname')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="lastname" class="col-md-4 col-form-label "><?php echo e(__('Lastname:')); ?></label>
+
+                      <div class="col-md-8">
+                          <input id="lastname" type="text" class="form-control<?php echo e($errors->has('glastname') ? ' is-invalid' : ''); ?>" name="glastname" value="<?php echo e($std->guarantor->lastname); ?>" required autofocus>
+
+                          <?php if($errors->has('lastname')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('lastname')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                  </div>
+
+
+
+
+
+                  <div class="form-group">
+                      <label for="phone" class="col-md-4 col-form-label "><?php echo e(__('Phone number:')); ?></label>
+
+                      <div class="col-md-8">
+                          <input id="phone" type="text" class="form-control<?php echo e($errors->has('gphone') ? ' is-invalid' : ''); ?>" name="gphone" value="<?php echo e($std->guarantor->phone); ?>" required autofocus>
+
+                          <?php if($errors->has('phone')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('phone')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="email" class="col-md-4 col-form-label "><?php echo e(__('E-Mail Address')); ?></label>
+
+                      <div class="col-md-8">
+                          <input id="email" type="email" class="form-control<?php echo e($errors->has('gemail') ? ' is-invalid' : ''); ?>" name="gemail" value="<?php echo e($std->guarantor->email); ?>" required>
+
+                          <?php if($errors->has('email')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('email')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="occupation" class="col-md-4 col-form-label "><?php echo e(__('Occupation:')); ?></label>
+
+                      <div class="col-md-8">
+                          <input id="occupation" type="text" class="form-control<?php echo e($errors->has('goccupation') ? ' is-invalid' : ''); ?>" name="goccupation" value="<?php echo e($std->guarantor->occupation); ?>" required autofocus>
+
+                          <?php if($errors->has('occupation')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('occupation')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="address" class="col-md-4 col-form-label "><?php echo e(__('Address:')); ?></label>
+
+                      <div class="col-md-8">
+                          <textarea id="address" type="text" class="form-control<?php echo e($errors->has('gaddress') ? ' is-invalid' : ''); ?>" name="gaddress" required autofocus><?php echo e($std->guarantor->email); ?></textarea>
+
+                          <?php if($errors->has('address')): ?>
+                              <span class="invalid-feedback" role="alert">
+                                  <strong><?php echo e($errors->first('address')); ?></strong>
+                              </span>
+                          <?php endif; ?>
+                      </div>
+                  </div>
+
+                  <div class="form-group mb-0">
+                      <div class="col-md-8">
+                          <button type="submit" class="btn btn-blue">
+                              <?php echo e(__('Update Information')); ?>
+
+                          </button>
+                      </div>
+                  </div>
+
+              </form>
             </div>
 
           </div>

@@ -1,7 +1,10 @@
 <?php $__env->startSection('content'); ?>
-<div class="container padd-80">
+<div class="container padd-40">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header"><?php echo e(__('Register')); ?></div>
+              <div class="card-body">
                     <form method="POST" action="<?php echo e(route('register')); ?>">
                         <?php echo csrf_field(); ?>
 
@@ -159,6 +162,9 @@
                         </div>
                     </form>
                 </div>
+              </div>
+            </div>
+
 
     </div>
 </div>

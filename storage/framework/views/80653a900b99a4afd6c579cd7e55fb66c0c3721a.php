@@ -48,36 +48,6 @@
             </div>
 
 
-            <div class="form-group">
-                <label for="accountnumber" class="col-md-4 col-form-label"><?php echo e(__('Account Number:')); ?></label>
-
-                <div class="col-md-8">
-                    <input id="accountnumber" type="number" class="form-control<?php echo e($errors->has('accountnumber') ? ' is-invalid' : ''); ?>" name="accountnumber" value="<?php echo e(old('accountnumber')); ?>" required autofocus>
-
-                    <?php if($errors->has('accountnumber')): ?>
-                        <span class="invalid-feedback" role="alert">
-                            <strong><?php echo e($errors->first('accountnumber')); ?></strong>
-                        </span>
-                    <?php endif; ?>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="bank" class="col-md-4 col-form-label"><?php echo e(__('Bank:')); ?></label>
-
-                <div class="col-md-8">
-                    <select id="bank" class="form-control<?php echo e($errors->has('gender') ? ' is-invalid' : ''); ?>" name="bank" >
-                      <option value="">---</option>
-                      <option value="Access Bank">Access Bank</option>
-                    </select>
-
-                    <?php if($errors->has('bank')): ?>
-                        <span class="invalid-feedback" role="alert">
-                            <strong><?php echo e($errors->first('bank')); ?></strong>
-                        </span>
-                    <?php endif; ?>
-                </div>
-            </div>
 
 
             <div class="form-group row mb-0">

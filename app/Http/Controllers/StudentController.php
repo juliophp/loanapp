@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use Alert;
 use App\User;
+use App\Guarantor;
 use App\University;
 use GuzzleHttp\Client;
 
@@ -50,12 +52,6 @@ class StudentController extends Controller
 
       $res = $client->get('http://restcountries.eu/rest/v2/all');
       $data  = json_decode($res->getBody());
-      //dd($states);
-      // foreach ($states as $state) {
-      //   echo "<pre>";
-      //   print_r($state->state->locals[1]);
-      //   echo "</pre>";
-      // }
       return view('students.edit', ['std' => User::findorFail($id), 'unis' => University::all(), 'states' => $states, 'countries' => $data]);
   }
 
@@ -77,6 +73,8 @@ class StudentController extends Controller
           'gender'  => 'string|nullable',
           'dob' => 'string|nullable',
           'phone' => 'string|nullable',
+          'bank' => 'string|nullable',
+          'accountnumber' => 'string|nullable',
           'email' => 'string|nullable',
           'nationality' => 'string|nullable',
           'stateoforigin' => 'string|nullable',
@@ -88,6 +86,12 @@ class StudentController extends Controller
           'cgpa' => 'string|nullable',
           'currentgpa' => 'string|nullable',
           'addresslineone' => 'string|nullable',
+          'gaddress' => 'string|nullable',
+          'gfirstname' => 'string|nullable',
+          'glastname' => 'string|nullable',
+          'gphone' => 'string|nullable',
+          'gemail' => 'string|nullable',
+          'goccupation' => 'string|nullable',
           'addresslinetwo' => 'string|nullable',
           'addresscity' => 'string|nullable',
           'addressstate' => 'string|nullable',
@@ -114,6 +118,23 @@ class StudentController extends Controller
         $std->addressstate = $request->addressstate;
         $std->addressyears = $request->addressyears;
         $std->addresscountry = $request->addresscountry;
+      }
+      else if($request->has('gfirstname'))
+      {
+        if($std->guarantor)
+          $guarantor = Guarantor::where('user_id', Auth::user()->id);
+        else
+          $guarantor = new Guarantor();
+
+        $guarantor->firstname = $request->gfirstname;
+        $guarantor->lastname = $request->glastname;
+        $guarantor->phone = $request->gphone;
+        $guarantor->email = $request->gemail;
+        $guarantor->occupation = $request->goccupation;
+        $guarantor->address = $request->gaddress;
+        $guarantor->user_id = Auth::user()->id;
+
+        $guarantor->save();
       }else
       {
         $std->firstname = $request->firstname;
@@ -132,7 +153,7 @@ class StudentController extends Controller
 
 
       //
-      alert()->success('User have been updated', 'Successful');
+      alert()->success('Data updated', 'Successful');
       return redirect()->route('home');
 
   }

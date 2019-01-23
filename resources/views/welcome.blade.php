@@ -61,10 +61,13 @@
                            <a data-scroll="" class="nav-link section-scroll" href="#about-tab">About</a>
                         </li>
                         <li class="nav-item">
-                           <a data-scroll="" class="nav-link section-scroll" href="#services-d">Login</a>
+                           <a data-scroll="" class="nav-link section-scroll" href="#services-d">Services</a>
                         </li>
                         <li>
                            <a data-scroll="" href="#testimonials" class="nav-link section-scroll">Testimonials</a>
+                        </li>
+                        <li>
+                           <a data-scroll="" href="{{route('login')}}" class="nav-link section-scroll">Login</a>
                         </li>
                         <li>
                            <div class="connect-block">

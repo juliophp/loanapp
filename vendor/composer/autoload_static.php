@@ -539,6 +539,7 @@ class ComposerStaticInit132d066ee18fb25727e45853a8392182
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Donor' => __DIR__ . '/../..' . '/app/Donor.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Guarantor' => __DIR__ . '/../..' . '/app/Guarantor.php',
         'App\\Http\\Controllers\\AdminBankController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminBankController.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AdminDonorController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminDonorController.php',

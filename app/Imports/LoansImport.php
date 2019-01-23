@@ -21,9 +21,7 @@ class LoansImport implements ToModel, WithHeadingRow
             //
             'loanpurpose'       => 'Scholarship',
             'loanamount'        => $row['amount'],
-            'bank'          => $row['bank'],
             'loanyear'      => $row['loanyear'],
-            'accountnumber' => $row['accountnumber'],
             'loanstatus'    => 'Accepted',
             'isclaimed'     => '0',
             'ispaid'        => '1',

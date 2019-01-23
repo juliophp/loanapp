@@ -1,15 +1,6 @@
 <?php $__env->startSection('content'); ?>
-<div class="container">
+<div class="container padd-40">
     <div class="row">
-      <div class="col-md-3">
-        <div class="list-group">
-          <a href="<?php echo e(route('home')); ?>" class="list-group-item list-group-item-action">Home</a>
-          <a href="<?php echo e(route('students.edit', Auth::user()->id)); ?>" class="list-group-item list-group-item-action">Update Profile</a>
-          <a href="<?php echo e(route('loans.create')); ?>" class="list-group-item list-group-item-action">Apply for a Loan</a>
-          <a href="<?php echo e(route('students.loans')); ?>" class="list-group-item list-group-item-action">View Loan Applications</a>
-
-        </div>
-      </div>
       <div class="col-md-9">
         <table class="table table-md">
             <tbody>
@@ -52,4 +43,4 @@
   </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.ui', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

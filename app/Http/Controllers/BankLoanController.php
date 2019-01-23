@@ -41,7 +41,7 @@ class BankLoanController extends Controller
     {
         //
         $loan = Loan::findOrFail($id);
-        if(($loan->isclaimed == 1) && ($loan->user->id != Auth::user()->id))
+        if(($loan->isclaimed == 1) && ($loan->bank->id != Auth::user()->id))
           abort(404);
 
         $loan->isclaimed = '1';
@@ -70,6 +70,7 @@ class BankLoanController extends Controller
           $loan->bank_id = Auth::user()->id;
         }
         $loan->save();
+        alert()->success('Loan application accepted.');
         return redirect()->route('bank.loans.index');
 
     }
@@ -79,7 +80,6 @@ class BankLoanController extends Controller
     public function granted()
     {
         $loans = Auth::user()->loans()->get();
-        alert()->success('Loan granted to user.');
         return view('banks.grant', ['loans' => $loans]);
     }
 

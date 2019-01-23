@@ -17,10 +17,8 @@ class CreateLoansTable extends Migration
           $table->increments('id');
           $table->string('loanamount');
           $table->string('loanpurpose');
-          $table->string('bank');
-          $table->string('accountnumber');
           $table->string('loanyear');
-          $table->string('loanstatus')->default('pending verification');
+          $table->string('loanstatus')->default('pending');
           $table->integer('isclaimed')->default('0');
           $table->integer('ispaid')->default('0');
           $table->integer('user_id')->unsigned();
