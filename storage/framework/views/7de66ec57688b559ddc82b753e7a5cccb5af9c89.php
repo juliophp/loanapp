@@ -21,14 +21,6 @@
                 <td><?php echo e($loan->loanpurpose); ?></td>
               </tr>
               <tr>
-                <td>Account Number:</td>
-                <td><?php echo e($loan->accountnumber); ?></td>
-              </tr>
-              <tr>
-                <td>Bank:</td>
-                <td><?php echo e($loan->bank); ?></td>
-              </tr>
-              <tr>
                 <td>Paid Status:</td>
                 <td><?php if($loan->ispaid == 0): ?> <?php echo e('Not Paid'); ?> <?php else: ?> <?php echo e('Paid'); ?> <?php endif; ?></td>
               </tr>

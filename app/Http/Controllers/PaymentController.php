@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+
 
 class PaymentController extends Controller
 {
@@ -15,7 +17,7 @@ class PaymentController extends Controller
      */
     public function __invoke(Request $request, $id)
     {
-      $data = array("url" => "http://localhost:8000/students/loans/".$id, "amount" => 1,
+      $data = array("url" => "http://68.169.60.38:89/students/loans/".$id, "amount" => 1500,
       "transref" => $id.time(), "terminalId" => "STUDENTLOAN_EFS" );
       $json = json_encode($data);
       $ch = curl_init("https://naira.com/webapi/stanbicpay.php");

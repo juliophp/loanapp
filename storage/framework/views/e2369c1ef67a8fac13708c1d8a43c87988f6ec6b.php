@@ -241,11 +241,12 @@
          </div>
       </footer>
       <!--Footer -->
+
+      <!-- jQuery -->
+      <script src="<?php echo e(asset('js/jquery-2.1.1.min.js')); ?>"></script>
       <script src="<?php echo e(asset('sweetalert/dist/sweetalert.min.js')); ?>"></script>
       <!-- Include this after the sweet alert js file -->
       <?php echo $__env->make('sweet::alert', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-      <!-- jQuery -->
-      <script src="<?php echo e(asset('js/jquery-2.1.1.min.js')); ?>"></script>
       <!-- Bootstrap Plugins -->
       <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
       <!-- Template Plugins -->

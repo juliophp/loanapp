@@ -40,8 +40,10 @@ class StudentLoanController extends Controller
              $loan->ispaid = 1;
              $loan->loanstatus = 'Submitted - Pending Review';
              $loan->save();
+             alert()->success('Loan has been created', 'Successful!');
+
            }else
-           echo 'Transaction Unsuccessful.';
+           alert()->error('Payment not Successful', 'Error!');
         }
         return view('loan.show', ['loan' => $loan]);
 

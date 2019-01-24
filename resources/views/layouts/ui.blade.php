@@ -241,11 +241,12 @@
          </div>
       </footer>
       <!--Footer -->
+
+      <!-- jQuery -->
+      <script src="{{asset('js/jquery-2.1.1.min.js')}}"></script>
       <script src="{{asset('sweetalert/dist/sweetalert.min.js')}}"></script>
       <!-- Include this after the sweet alert js file -->
       @include('sweet::alert')
-      <!-- jQuery -->
-      <script src="{{asset('js/jquery-2.1.1.min.js')}}"></script>
       <!-- Bootstrap Plugins -->
       <script src="{{asset('js/bootstrap.min.js')}}"></script>
       <!-- Template Plugins -->

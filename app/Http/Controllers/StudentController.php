@@ -105,6 +105,8 @@ class StudentController extends Controller
       {
         $std->university_id = $request->university;
         $std->program = $request->program;
+        $std->matricno = $request->matricno;
+        $std->tuitionfee = $request->tuitionfee;
         $std->yearofgraduation = $request->yearofgraduation;
         $std->department = $request->department;
         $std->cgpa = $request->cgpa;
@@ -122,19 +124,19 @@ class StudentController extends Controller
       else if($request->has('gfirstname'))
       {
         if($std->guarantor)
-          $guarantor = Guarantor::where('user_id', Auth::user()->id);
+            $guarantor = Guarantor::where('user_id', Auth::user()->id)->get();
         else
           $guarantor = new Guarantor();
 
-        $guarantor->firstname = $request->gfirstname;
-        $guarantor->lastname = $request->glastname;
-        $guarantor->phone = $request->gphone;
-        $guarantor->email = $request->gemail;
-        $guarantor->occupation = $request->goccupation;
-        $guarantor->address = $request->gaddress;
-        $guarantor->user_id = Auth::user()->id;
+        $guarantor->first()->firstname = $request->gfirstname;
+        $guarantor->first()->lastname = $request->glastname;
+        $guarantor->first()->phone = $request->gphone;
+        $guarantor->first()->email = $request->gemail;
+        $guarantor->first()->occupation = $request->goccupation;
+        $guarantor->first()->address = $request->gaddress;
+        $guarantor->first()->user_id = Auth::user()->id;
+        $guarantor->first()->save();
 
-        $guarantor->save();
       }else
       {
         $std->firstname = $request->firstname;
@@ -142,19 +144,20 @@ class StudentController extends Controller
         $std->lastname = $request->lastname;
         $std->gender = $request->gender;
         $std->dob = $request->dob;
+        $std->bank = $request->bank;
+        $std->accountnumber = $request->accountnumber;
         $std->phone = $request->phone;
         $std->email = $request->email;
         $std->nationality= $request->nationality;
         $std->stateoforigin= $request->stateoforigin;
         $std->bvn = $request->bvn;
       }
-
+      alert()->success('Data updated', 'Successful');
       $std->save();
 
 
       //
-      alert()->success('Data updated', 'Successful');
-      return redirect()->route('home');
+      return redirect()->route('students.edit', Auth::user()->id);
 
   }
 

@@ -87,8 +87,8 @@
 
                        <div class="col-md-8">
                            <select id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" >
-                             <option value="male">Male</option>
-                             <option value="female">Female</option>
+                             <option value="male" @if($std->gender == 'male'){{ 'selected'}}@endif>Male</option>
+                             <option value="female" @if($std->gender == 'female'){{ 'selected'}}@endif>Female</option>
                            </select>
 
                            @if ($errors->has('gender'))
@@ -148,7 +148,7 @@
                            <select id="nationality" class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}" name="nationality"  required>
                              <option value="">---</option>
                              @foreach($countries as $country)
-                             <option value="{{ $country->name }}">{{ $country->name }}</option>
+                             <option value="{{ $country->name }}" @if($std->nationality == $country->name){{ 'selected'}}@endif>{{ $country->name }}</option>
                              @endforeach
                            </select>
 
@@ -167,7 +167,7 @@
                              <select id="stateoforigin" class="form-control{{ $errors->has('stateoforigin') ? ' is-invalid' : '' }}" name="stateoforigin">
                                <option value="">N/A</option>
                                @foreach($states as $state)
-                               <option id="{{ $state->state->id }}"value="{{$state->state->name}}">{{$state->state->name}}</option>
+                               <option id="{{ $state->state->id }}" value="{{$state->state->name}}" @if($std->stateoforigin == $state->state->name){{ 'selected'}}@endif>{{$state->state->name}}</option>
                                @endforeach
                              </select>
 
@@ -196,7 +196,7 @@
                            <label for="accountnumber" class="col-md-4 col-form-label">{{ __('Account Number:') }}</label>
 
                            <div class="col-md-8">
-                               <input id="accountnumber" type="number" class="form-control{{ $errors->has('accountnumber') ? ' is-invalid' : '' }}" name="accountnumber" value="{{ old('accountnumber') }}" required autofocus>
+                               <input id="accountnumber" type="number" class="form-control{{ $errors->has('accountnumber') ? ' is-invalid' : '' }}" name="accountnumber" value="{{ $std->accountnumber }}" required autofocus>
 
                                @if ($errors->has('accountnumber'))
                                    <span class="invalid-feedback" role="alert">
@@ -319,7 +319,7 @@
                        <div class="col-md-8">
                            <select id="university" class="form-control {{ $errors->has('university') ? 'is-invalid' : '' }}" name="university">
                              @foreach($unis as $uni)
-                             <option value="{{ $uni->id }}">{{ $uni->universityname }}</option>
+                             <option value="{{ $uni->id }}" @if($std->university == $uni->universityname){{ 'selected'}}@endif>{{ $uni->universityname }}</option>
                              @endforeach
                            </select>
 
@@ -361,9 +361,9 @@
 
                         <div class="col-md-8">
                           <select id="program" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" >
-                            <option value="Bachelors">Bachelors</option>
-                            <option value="Masters">Masters</option>
-                            <option value="Postgraduate">Post Graduate</option>
+                            <option value="Bachelors" @if($std->program == 'Bachelors'){{ 'selected'}}@endif>Bachelors</option>
+                            <option value="Masters" @if($std->program == 'Masters'){{ 'selected'}}@endif>Masters</option>
+                            <option value="Postgraduate" @if($std->program == 'Postgraduate'){{ 'selected'}}@endif>Post Graduate</option>
 
                           </select>
                             @if ($errors->has('program'))
@@ -378,19 +378,13 @@
 
                         <div class="col-md-8">
                           <select id="yearofgraduation" class="form-control{{ $errors->has('yearofgraduation') ? ' is-invalid' : '' }}" name="yearofgraduation" >
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2024</option>
-                            <option value="2023">2025</option>
-
-
+                            @for($i = date('Y'); $i < (date('Y') + 7); $i++)
+                            <option value="{{ $i.'/'.($i+1) }}" @if($std->yearofgraduation == ($i.'/'.($i+1))){{ 'selected'}}@endif>{{ $i.'/'.($i+1) }}</option>
+                            @endfor
                           </select>
-                            @if ($errors->has('program'))
+                            @if ($errors->has('yearofgraduation'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('program') }}</strong>
+                                    <strong>{{ $errors->first('yearofgraduation') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -525,7 +519,7 @@
                            <select id="addresscountry" class="form-control{{ $errors->has('addresscountry') ? ' is-invalid' : '' }}" name="addresscountry"  required>
                              <option value="">---</option>
                              @foreach($countries as $country)
-                             <option value="{{ $country->name }}">{{ $country->name }}</option>
+                             <option value="{{ $country->name }}" @if($std->addresscountry == $country->name){{ 'selected'}}@endif>{{ $country->name }}</option>
                              @endforeach
                            </select>
 
@@ -630,7 +624,7 @@
                       <label for="address" class="col-md-4 col-form-label ">{{ __('Address:') }}</label>
 
                       <div class="col-md-8">
-                          <textarea id="address" type="text" class="form-control{{ $errors->has('gaddress') ? ' is-invalid' : '' }}" name="gaddress" required autofocus>@if($std->guarantor){{ $std->guarantor->email }}@endif</textarea>
+                          <textarea id="address" type="text" class="form-control{{ $errors->has('gaddress') ? ' is-invalid' : '' }}" name="gaddress" required autofocus>@if($std->guarantor){{ $std->guarantor->address }}@endif</textarea>
 
                           @if ($errors->has('address'))
                               <span class="invalid-feedback" role="alert">

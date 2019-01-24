@@ -85,8 +85,8 @@
 
                        <div class="col-md-8">
                            <select id="gender" class="form-control<?php echo e($errors->has('gender') ? ' is-invalid' : ''); ?>" name="gender" >
-                             <option value="male">Male</option>
-                             <option value="female">Female</option>
+                             <option value="male" <?php if($std->gender == 'male'): ?><?php echo e('selected'); ?><?php endif; ?>>Male</option>
+                             <option value="female" <?php if($std->gender == 'female'): ?><?php echo e('selected'); ?><?php endif; ?>>Female</option>
                            </select>
 
                            <?php if($errors->has('gender')): ?>
@@ -146,7 +146,7 @@
                            <select id="nationality" class="form-control<?php echo e($errors->has('nationality') ? ' is-invalid' : ''); ?>" name="nationality"  required>
                              <option value="">---</option>
                              <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                             <option value="<?php echo e($country->name); ?>"><?php echo e($country->name); ?></option>
+                             <option value="<?php echo e($country->name); ?>" <?php if($std->nationality == $country->name): ?><?php echo e('selected'); ?><?php endif; ?>><?php echo e($country->name); ?></option>
                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                            </select>
 
@@ -165,7 +165,7 @@
                              <select id="stateoforigin" class="form-control<?php echo e($errors->has('stateoforigin') ? ' is-invalid' : ''); ?>" name="stateoforigin">
                                <option value="">N/A</option>
                                <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                               <option id="<?php echo e($state->state->id); ?>"value="<?php echo e($state->state->name); ?>"><?php echo e($state->state->name); ?></option>
+                               <option id="<?php echo e($state->state->id); ?>" value="<?php echo e($state->state->name); ?>" <?php if($std->stateoforigin == $state->state->name): ?><?php echo e('selected'); ?><?php endif; ?>><?php echo e($state->state->name); ?></option>
                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                              </select>
 
@@ -194,7 +194,7 @@
                            <label for="accountnumber" class="col-md-4 col-form-label"><?php echo e(__('Account Number:')); ?></label>
 
                            <div class="col-md-8">
-                               <input id="accountnumber" type="number" class="form-control<?php echo e($errors->has('accountnumber') ? ' is-invalid' : ''); ?>" name="accountnumber" value="<?php echo e(old('accountnumber')); ?>" required autofocus>
+                               <input id="accountnumber" type="number" class="form-control<?php echo e($errors->has('accountnumber') ? ' is-invalid' : ''); ?>" name="accountnumber" value="<?php echo e($std->accountnumber); ?>" required autofocus>
 
                                <?php if($errors->has('accountnumber')): ?>
                                    <span class="invalid-feedback" role="alert">
@@ -318,7 +318,7 @@
                        <div class="col-md-8">
                            <select id="university" class="form-control <?php echo e($errors->has('university') ? 'is-invalid' : ''); ?>" name="university">
                              <?php $__currentLoopData = $unis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $uni): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                             <option value="<?php echo e($uni->id); ?>"><?php echo e($uni->universityname); ?></option>
+                             <option value="<?php echo e($uni->id); ?>" <?php if($std->university == $uni->universityname): ?><?php echo e('selected'); ?><?php endif; ?>><?php echo e($uni->universityname); ?></option>
                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                            </select>
 
@@ -360,9 +360,9 @@
 
                         <div class="col-md-8">
                           <select id="program" class="form-control<?php echo e($errors->has('program') ? ' is-invalid' : ''); ?>" name="program" >
-                            <option value="Bachelors">Bachelors</option>
-                            <option value="Masters">Masters</option>
-                            <option value="Postgraduate">Post Graduate</option>
+                            <option value="Bachelors" <?php if($std->program == 'Bachelors'): ?><?php echo e('selected'); ?><?php endif; ?>>Bachelors</option>
+                            <option value="Masters" <?php if($std->program == 'Masters'): ?><?php echo e('selected'); ?><?php endif; ?>>Masters</option>
+                            <option value="Postgraduate" <?php if($std->program == 'Postgraduate'): ?><?php echo e('selected'); ?><?php endif; ?>>Post Graduate</option>
 
                           </select>
                             <?php if($errors->has('program')): ?>
@@ -377,19 +377,13 @@
 
                         <div class="col-md-8">
                           <select id="yearofgraduation" class="form-control<?php echo e($errors->has('yearofgraduation') ? ' is-invalid' : ''); ?>" name="yearofgraduation" >
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2024</option>
-                            <option value="2023">2025</option>
-
-
+                            <?php for($i = date('Y'); $i < (date('Y') + 7); $i++): ?>
+                            <option value="<?php echo e($i.'/'.($i+1)); ?>" <?php if($std->yearofgraduation == ($i.'/'.($i+1))): ?><?php echo e('selected'); ?><?php endif; ?>><?php echo e($i.'/'.($i+1)); ?></option>
+                            <?php endfor; ?>
                           </select>
-                            <?php if($errors->has('program')): ?>
+                            <?php if($errors->has('yearofgraduation')): ?>
                                 <span class="invalid-feedback" role="alert">
-                                    <strong><?php echo e($errors->first('program')); ?></strong>
+                                    <strong><?php echo e($errors->first('yearofgraduation')); ?></strong>
                                 </span>
                             <?php endif; ?>
                         </div>
@@ -525,7 +519,7 @@
                            <select id="addresscountry" class="form-control<?php echo e($errors->has('addresscountry') ? ' is-invalid' : ''); ?>" name="addresscountry"  required>
                              <option value="">---</option>
                              <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                             <option value="<?php echo e($country->name); ?>"><?php echo e($country->name); ?></option>
+                             <option value="<?php echo e($country->name); ?>" <?php if($std->addresscountry == $country->name): ?><?php echo e('selected'); ?><?php endif; ?>><?php echo e($country->name); ?></option>
                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                            </select>
 
@@ -631,7 +625,7 @@
                       <label for="address" class="col-md-4 col-form-label "><?php echo e(__('Address:')); ?></label>
 
                       <div class="col-md-8">
-                          <textarea id="address" type="text" class="form-control<?php echo e($errors->has('gaddress') ? ' is-invalid' : ''); ?>" name="gaddress" required autofocus><?php if($std->guarantor): ?><?php echo e($std->guarantor->email); ?><?php endif; ?></textarea>
+                          <textarea id="address" type="text" class="form-control<?php echo e($errors->has('gaddress') ? ' is-invalid' : ''); ?>" name="gaddress" required autofocus><?php if($std->guarantor): ?><?php echo e($std->guarantor->address); ?><?php endif; ?></textarea>
 
                           <?php if($errors->has('address')): ?>
                               <span class="invalid-feedback" role="alert">
