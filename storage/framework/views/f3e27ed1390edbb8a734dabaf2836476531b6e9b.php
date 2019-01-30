@@ -17,6 +17,9 @@
              <li class="nav-item">
                 <a class="nav-link" id="guarantor-tab" data-toggle="tab" href="#guarantor" role="tab" aria-controls="guarantor" aria-selected="false">Guarantor Information</a>
              </li>
+             <li class="nav-item">
+                <a class="nav-link" id="upload-tab" data-toggle="tab" href="#upload" role="tab" aria-controls="upload" aria-selected="false">Upload Photo</a>
+             </li>
           </ul>
           <div class="tab-content text-left" id="myTabContent">
              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -296,7 +299,32 @@
                                <?php endif; ?>
                            </div>
                        </div>
+                       <div class="form-group">
+                           <label for="facebookhandle" class="col-md-4 col-form-label"><?php echo e(__('Facebook Handle:')); ?></label>
 
+                           <div class="col-md-8">
+                               <input id="facebookhandle" type="text" class="form-control<?php echo e($errors->has('facebookhandle') ? ' is-invalid' : ''); ?>" name="facebookhandle" value="<?php echo e($std->facebookhandle); ?>" autofocus>
+
+                               <?php if($errors->has('facebookhandle')): ?>
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong><?php echo e($errors->first('facebookhandle')); ?></strong>
+                                   </span>
+                               <?php endif; ?>
+                           </div>
+                       </div>
+                       <div class="form-group">
+                           <label for="twitterhandle" class="col-md-4 col-form-label"><?php echo e(__('Twitter Handle:')); ?></label>
+
+                           <div class="col-md-8">
+                               <input id="twitterhandle" type="text" class="form-control<?php echo e($errors->has('twitterhandle') ? ' is-invalid' : ''); ?>" name="twitterhandle" value="<?php echo e($std->twitterhandle); ?>" autofocus>
+
+                               <?php if($errors->has('twitterhandle')): ?>
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong><?php echo e($errors->first('twitterhandle')); ?></strong>
+                                   </span>
+                               <?php endif; ?>
+                           </div>
+                       </div>
                    <div class="form-group mb-0">
                        <div class="col-md-8">
                            <button type="submit" class="btn btn-blue">
@@ -542,7 +570,7 @@
 
                 </form>
               </div>
-            <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
+             <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
               <form method="POST" action="<?php echo e(route('students.update', Auth::user()->id)); ?>">
                   <?php echo csrf_field(); ?>
                   <?php echo method_field('patch'); ?>
@@ -645,8 +673,59 @@
                   </div>
 
               </form>
-            </div>
+             </div>
+             <div class="tab-pane fade" id="upload" role="tabpanel" aria-labelledby="upload-tab">
+                <form method="POST" class="row" action="<?php echo e(route('students.update', Auth::user()->id)); ?>" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('patch'); ?>
+                    <div class="col-md-6">
+                      <div class="form-group ">
+                          <label for="firstname" class="col-md-4 col-form-label"><?php echo e(__('Upload Photo:')); ?></label>
 
+                          <div class="col-md-12">
+                              <input id="photo" type="file" class="form-control<?php echo e($errors->has('photo') ? ' is-invalid' : ''); ?>" name="photo"  required autofocus>
+
+                              <?php if($errors->has('photo')): ?>
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong><?php echo e($errors->first('photo')); ?></strong>
+                                  </span>
+                              <?php endif; ?>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="photoid" class="col-md-4 col-form-label "><?php echo e(__('Photo ID:')); ?></label>
+
+                          <div class="col-md-12">
+                              <input id="photoid" type="file" class="form-control<?php echo e($errors->has('photoid') ? ' is-invalid' : ''); ?>" name="photoid"  required autofocus>
+
+                              <?php if($errors->has('photoid')): ?>
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong><?php echo e($errors->first('photoid')); ?></strong>
+                                  </span>
+                              <?php endif; ?>
+                          </div>
+                      </div>
+
+                      <div class="form-group mb-0">
+                          <div class="col-md-8">
+                              <button type="submit" class="btn btn-blue">
+                                  <?php echo e(__('Save')); ?>
+
+                              </button>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 padd-40">
+                      <img src="<?php echo e(asset('storage/photos/'.$std->photo)); ?>" class="rounded-circle" width="200px">
+                      <small>Photo</small>
+                    </div>
+                    <div class="col-md-2 padd-40">
+                      <img src="<?php echo e(asset('storage/photos/'.$std->photoid)); ?>" class="square" width="200px">
+                      <small>Photo ID</small>
+                    </div>
+                </form>
+             </div>
           </div>
 
           <?php if(session('errors')): ?>

@@ -24,7 +24,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="{{ asset('storage/photos/'.$user->photo)}}" alt="{{ $user->firstname }}'s Picture'">
 
               <h3 class="profile-username text-center">{{ $user->firstname }}</h3>
 
@@ -46,6 +46,10 @@
               <div class="tab-content">
                 <div class="active tab-pane" id="activity">
                   <table class="table">
+                    <tr>
+                      <td><h5>Student ID:</h5></td>
+                      <td><h5>{{ $user->matricno }}</h5></td>
+                    </tr>
                     <tr>
                       <td><h5>Firstname:</h5></td>
                       <td><h5>{{ $user->firstname }}</h5></td>
@@ -97,8 +101,7 @@
                         <label for="desc" class="col-md-2 col-form-label">{{ __('Note:') }}</label>
 
                         <div class="col-md-8">
-                            <textarea id="desc" type="text" class="form-control{{ $errors->has('desc') ? ' is-invalid' : '' }}" name="desc" required autofocus>
-                            </textarea>
+                            <textarea id="desc" type="text" class="form-control{{ $errors->has('desc') ? ' is-invalid' : '' }}" name="desc" required autofocus></textarea>
 
                             @if ($errors->has('desc'))
                                 <span class="invalid-feedback" role="alert">

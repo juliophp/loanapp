@@ -158,9 +158,54 @@ class BankController extends Controller
      * @param  \App\Bank  $bank
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bank $bank)
+    public function update(Request $request, $id)
     {
-        //
+
+
+        $bank = Bank::findOrFail(Auth::user()->id);
+        if($request->has('bankname'))
+        {
+          $request->validate([
+            'bankname'=>'required|string',
+            'username' => 'nullable|string',
+            'phone' => 'required|string',
+            'email' => 'required|email',
+            'address' => 'required|string',
+            'addresscity' => 'required|string',
+            'addressstate' => 'required|string',
+
+          ]);
+          $bank->bankname = $request->bankname;
+          $bank->phone = $request->phone;
+          $bank->email = $request->email;
+          $bank->address = $request->address;
+          $bank->addresscity = $request->addresscity;
+          $bank->addressstate = $request->addressstate;
+        }else if($request->has('password'))
+        {
+          $request->validate([
+          'password'=>'required|confirmed|min:6',
+          ]);
+          $bank->password = Hash::make($request->password);
+
+        }else if($request->has('avatar'))
+        {
+          $request->validate([
+          'avatar'=>'required|image',
+          ]);
+          $name = 'B'.Auth::user()->id.uniqid().'.'.$request->file('avatar')->getClientOriginalExtension();
+          $avi = $request->file('avatar')->storeAs('public/photos', $name);
+          if($avi)
+            $bank->photo = $name;
+          else
+            alert()->error('error uploading picture', 'Error');
+
+        }
+        $bank->save();
+        alert()->success('Profile Updated', 'Successful');
+        return redirect()->route('bank.banks.show', Auth::user()->id);
+
+
     }
 
     /**

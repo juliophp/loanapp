@@ -79,6 +79,8 @@ class StudentController extends Controller
           'nationality' => 'string|nullable',
           'stateoforigin' => 'string|nullable',
           'bvn' => 'string|nullable',
+          'facebookhandle' => 'string|nullable',
+          'twitterhandle' => 'string|nullable',
           'university' => 'string|nullable',
           'program' => 'string|nullable',
           'yearofgraduation' => 'string|nullable',
@@ -97,6 +99,8 @@ class StudentController extends Controller
           'addressstate' => 'string|nullable',
           'addressyears' => 'string|nullable',
           'addresscountry' => 'string|nullable',
+          'photo' => 'mimes:jpeg,png,bmp,tiff |max:4096',
+          'photoid' => 'mimes:jpeg,png,bmp,tiff |max:4096'
         ]);
 
       $std = User::findorFail($id);
@@ -123,19 +127,41 @@ class StudentController extends Controller
       }
       else if($request->has('gfirstname'))
       {
-        if($std->guarantor)
+        if($std->guarantor){
             $guarantor = Guarantor::where('user_id', Auth::user()->id)->get();
+            $guarantor->first()->firstname = $request->gfirstname;
+            $guarantor->first()->lastname = $request->glastname;
+            $guarantor->first()->phone = $request->gphone;
+            $guarantor->first()->email = $request->gemail;
+            $guarantor->first()->occupation = $request->goccupation;
+            $guarantor->first()->address = $request->gaddress;
+            $guarantor->first()->user_id = Auth::user()->id;
+            $guarantor->first()->save();}
         else
-          $guarantor = new Guarantor();
+          {$guarantor = new Guarantor();
+          $guarantor->firstname = $request->gfirstname;
+          $guarantor->lastname = $request->glastname;
+          $guarantor->phone = $request->gphone;
+          $guarantor->email = $request->gemail;
+          $guarantor->occupation = $request->goccupation;
+          $guarantor->address = $request->gaddress;
+          $guarantor->user_id = Auth::user()->id;
+          $guarantor->save();}
 
-        $guarantor->first()->firstname = $request->gfirstname;
-        $guarantor->first()->lastname = $request->glastname;
-        $guarantor->first()->phone = $request->gphone;
-        $guarantor->first()->email = $request->gemail;
-        $guarantor->first()->occupation = $request->goccupation;
-        $guarantor->first()->address = $request->gaddress;
-        $guarantor->first()->user_id = Auth::user()->id;
-        $guarantor->first()->save();
+      }else if($request->has('photo'))
+      {
+        $p = 'p'.Auth::user()->id.uniqid().'.'.$request->file('photo')->getClientOriginalExtension();
+        $pid = 'pid'.Auth::user()->id.uniqid().'.'.$request->file('photoid')->getClientOriginalExtension();
+
+        $photo = $request->file('photo')->storeAs('public/photos', $p);
+        $photoid = $request->file('photoid')->storeAs('public/photos', $pid);
+
+        if($photo && $photoid)
+        {
+            $std->photo = $p;
+            $std->photoid = $pid;
+        }else
+        alert()->error('error uploading picture', 'Error');
 
       }else
       {
@@ -151,6 +177,8 @@ class StudentController extends Controller
         $std->nationality= $request->nationality;
         $std->stateoforigin= $request->stateoforigin;
         $std->bvn = $request->bvn;
+        $std->twitterhandle = $request->twitterhandle;
+        $std->facebookhandle = $request->facebookhandle;
       }
       alert()->success('Data updated', 'Successful');
       $std->save();

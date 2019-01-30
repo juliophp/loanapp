@@ -64,13 +64,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo e(asset('dist/img/user2-160x160.jpg')); ?>" class="user-image" alt="User Image">
+              <img src="<?php echo e(asset('storage/photos/'.Auth::user()->photo)); ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo e(Auth::user()->bankname); ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo e(asset('dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
+                <img src="<?php echo e(asset('storage/photos/'.Auth::user()->photo)); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo e(Auth::user()->bankname); ?>
@@ -123,6 +123,13 @@
           <a href="<?php echo e(route('bank.loans.granted')); ?>">
             <i class="fa fa-file-o"></i>
             <span>Granted Loans</span>
+          </a>
+        </li>
+
+        <li class="<?php echo e(Request::is('bank/balance') ? 'active' : ''); ?>">
+          <a href="<?php echo e(route('bank.balance.index')); ?>">
+            <i class="fa fa-file-o"></i>
+            <span>Wallet Balance</span>
           </a>
         </li>
 

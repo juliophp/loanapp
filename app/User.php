@@ -19,8 +19,8 @@ class User extends Authenticatable
         'firstname', 'middlename', 'lastname', 'dob', 'username', 'gender',
         'nationality', 'stateoforigin', 'phone', 'bvn', 'degreeverified',
         'bvnverified', 'yearofgraduation','creditchecked', 'addresslineone', 'tuitionfee',
-        'addresslinetwo', 'addresscity', 'addressstate', 'addressyears', 'matricno',
-        'facebookhandle', 'program', 'twitterhandle', 'university_id','bank',
+        'addresslinetwo', 'addresscity', 'addressstate', 'addressyears', 'matricno', 'photo',
+        'facebookhandle', 'program', 'twitterhandle', 'university_id','bank', 'photoid',
         'accountnumber', 'department', 'cgpa', 'currentgpa', 'email', 'password',
     ];
 

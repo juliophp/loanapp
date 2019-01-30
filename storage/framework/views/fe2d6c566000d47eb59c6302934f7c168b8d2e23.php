@@ -5,8 +5,8 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="LeadDigital  Landing page Template">
-      <title>Education Finance Service | Welcome</title>
+      <meta name="description" content="Education Finance Solution | Landing page">
+      <title>Education Finance Solution | Welcome</title>
       <!--External Stylesheets css-->
       <!-- Bootstrap -->
       <link rel="stylesheet" href="<?php echo e(asset('cs/bootstrap.min.css')); ?>">
@@ -92,8 +92,8 @@
                            <div class="hero-text">
                               <h2>Welcome to <span>EFS</span></h2>
                               <p>
-                                 Education Finance Solution(EFS) is a product of Education Finance Company, This platform serves as a meeting point for
-                                 loan applicants, lenders and donors.
+                                 Education Finance Solution(EFS) is a product of Education Finance Company. This platform serves as a meeting point for
+                                 student, lenders and donors.
                               </p>
                               <a href="https://www.youtube.com/embed/7e90gBu4pas" class="video-modal play-btn"><img src="<?php echo e(asset('images/play-button.svg')); ?>" alt="">Watch video</a>
                            </div>
@@ -163,7 +163,6 @@
                      <div class="col-centered col-lg-7">
                         <h2 class="title-h2">Instant Loan Application  </h2>
                         <p class="font-p mg-tp-30 mg-bt-60">
-                           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
                         </p>
                      </div>
                   </div>
@@ -172,19 +171,19 @@
                         <li class="link-tab wow fadeInLeft" data-wow-delay="0.4s">
                            <a href="#tab1"   data-toggle="tab">
                               <h4>Students</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                              <p>New Students, Returning Students, Postgraduate Students can access loan to finance their education</p>
                            </a>
                         </li>
                         <li class="link-tab wow fadeInLeft" data-wow-delay="0.6s">
                            <a href="#tab2"  class="active" data-toggle="tab">
                               <h4>Banks</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                              <p>Partner banks provide loans for qualified student applicants</p>
                            </a>
                         </li>
                         <li class="link-tab wow fadeInLeft" data-wow-delay="0.6s">
                            <a href="#tab3"   data-toggle="tab">
                               <h4>Donors</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                              <p>Donors provide grants to specific qualifying student applicants</p>
                            </a>
                         </li>
                      </ul>
@@ -228,25 +227,25 @@
                <div class="row">
                   <div class="col-md-3 col-sm-3 col-12 z-index">
                      <div class="number-bloc">
-                        <span>1,143 </span>
+                        <span><?php echo e(App\Loan::count()); ?></span>
                         <p>Applications</p>
                      </div>
                   </div>
                   <div class="col-md-3 col-sm-3 col-12 z-index">
                      <div class="number-bloc">
-                        <span>200</span>
+                        <span>25</span>
                         <p>Banks</p>
                      </div>
                   </div>
                   <div class="col-md-3 col-sm-3 col-12 z-index">
                      <div class="number-bloc">
-                        <span>250</span>
-                        <p>Donors</p>
+                        <span><?php echo e(App\Donor::count()); ?></span>
+                        <p>Donor(s)</p>
                      </div>
                   </div>
                   <div class="col-md-3 col-sm-3 col-12 z-index">
                      <div class="number-bloc">
-                        <span>134</span>
+                        <span><?php echo e(App\University::count()); ?></span>
                         <p>Universities</p>
                      </div>
                   </div>
@@ -270,14 +269,14 @@
                               <a class="nav-link"   data-toggle="tab" href="#tab-1">Students / Loan Applicants</a>
                            </li>
                            <li class="nav-item ">
-                              <a class="nav-link  active"   data-toggle="tab" href="#tab-2" >Bank / Lender Log In</a>
+                              <a class="nav-link  active"   data-toggle="tab" href="#tab-2">Bank / Lender Log In</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link"   data-toggle="tab" href="#tab-3">Social Media Marketing</a>
+                              <a class="nav-link"   data-toggle="tab" href="#tab-3">Donor Log In</a>
                            </li>
-                           <li class="nav-item">
+                           <!--<li class="nav-item">
                               <a class="nav-link"   data-toggle="tab" href="#tab-4">Search Engine Optimization</a>
-                           </li>
+                           </li>-->
                         </ul>
                         <div class="tab-content mg-tp-60">
                            <div class="tab-pane fade " id="tab-1">
@@ -338,16 +337,22 @@
                                     </div>
                                  </div>
                                  <div class="col-md-6 col-12 col-sm-6 text-left">
-                                    <h3>Social Media Marketing</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                    <p>
-                                       Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                                    </p>
-                                    <a href="" class="btn btn-blue">Read more</a>
+                                    <h3>Donor Login</h3>
+                                    <div class="form-group">
+                                       <div class="col-lg-12">
+                                          <label for="username" class="col-form-label text-md-right">Username: </label>
+                                          <input type="text" name="username" class="form-control" placeholder="username">
+                                       </div>
+                                       <div class="col-lg-12">
+                                          <label for="password" class="col-form-label text-md-right">Password: </label>
+                                          <input type="password" name="dob" class="form-control" placeholder="password">
+                                       </div>
+                                    </div>
+                                    <a href="" class="btn btn-blue">Log In</a>
                                  </div>
                               </div>
                            </div>
-                           <div class="tab-pane fade" id="tab-4">
+                           <!-- <div class="tab-pane fade" id="tab-4">
                               <div class="row">
                                  <div class="col-md-6 col-12 col-sm-6">
                                     <div class="bloc-icon">
@@ -364,7 +369,7 @@
                                  </div>
                               </div>
                            </div>
-                        </div>
+-->                        </div>
                      </div>
                   </div>
                </div>
@@ -395,21 +400,20 @@
                      <div class="col-centered col-lg-7 col-12 col-md-7">
                         <h2 class="title-h2">Testimonials</h2>
                         <p class="font-p mg-tp-30 mg-bt-60">
-                           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
                         </p>
                         <div class="testimonial-slider">
                            <div class="item-inner">
                               <div class="avatar-item">
                                  <div class="avatar-photo">
-                                    <img src="<?php echo e(asset('images/avatars/1.jpg')); ?>" alt="">
+                                    <img src="<?php echo e(asset('images/avatars/1.PNG')); ?>" alt="">
                                  </div>
                                  <div class="avatar-info">
-                                    <h4>Kathleen Mills</h4>
-                                    <span>Digital constumer</span>
+                                    <h4>Temitope Taiwo</h4>
+                                    <span>University of Lagos, Accouting Department</span>
                                  </div>
                               </div>
                               <p>
-                                 Nam libero tempore, cum soluta nobis est eligen di opt ios cumque <br>nihil impedit quo minus id quo d maxime placeat facere possimus.<br>Sed ut perspi ciatis unde omnis iste natus error sit
+                                EFC came through for me, in the pursuit of my education dream
                               </p>
                            </div>
                            <div class="item-inner">
@@ -418,25 +422,23 @@
                                     <img src="<?php echo e(asset('images/avatars/2.jpg')); ?>" alt="">
                                  </div>
                                  <div class="avatar-info">
-                                    <h4>Jasmine Brown</h4>
-                                    <span>Digital constumer</span>
+                                    <h4>Seyi Sulaiman</h4>
+                                    <span>LASU, Computer Science</span>
                                  </div>
                               </div>
                               <p>
-                                 Nam libero tempore, cum soluta nobis est eligen di opt ios cumque <br>nihil impedit quo minus id quo d maxime placeat facere possimus.<br>Sed ut perspi ciatis unde omnis iste natus
-                           </div>
+Thanks to EFC for making my dream come true.</p>                           </div>
                            <div class="item-inner">
                               <div class="avatar-item">
                                  <div class="avatar-photo">
                                     <img src="<?php echo e(asset('images/avatars/3.jpg')); ?>" alt="">
                                  </div>
                                  <div class="avatar-info">
-                                    <h4>Ethan Nguyen</h4>
-                                    <span>Digital constumer</span>
+                                    <h4>Joanna Akan</h4>
+                                    <span>Unical, Computer Science</span>
                                  </div>
                               </div>
-                              <p>
-                                 Nam libero tempore, cum soluta nobis est eligen di opt ios cumque <br>nihil impedit quo minus id quo d maxime placeat facere possimus.<br>Sed ut perspi ciatis unde omnis iste natus
+                              <p>Yes! I made it, Thanks to EFC </p>
                            </div>
                         </div>
                      </div>

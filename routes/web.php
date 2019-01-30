@@ -26,7 +26,10 @@ Route::prefix('bank')->group(function() {
   Route::get('/bvn/{id}/', 'BankController@loadbvn')->name('bvn.load');
   Route::post('/bvn/{id}/{bvn}', 'BankController@verifybvn')->name('bvn.verify');
   Route::get('loans/granted','BankLoanController@granted')->name('bank.loans.granted');
+  Route::get('loans/export','BankLoanController@export')->name('bank.loans.export');
   Route::resource('loans', 'BankLoanController', ['as' => 'bank', 'only' => ['index', 'show', 'update']  ]);
+  Route::resource('balance', 'BankBalanceController', ['as' => 'bank', 'only' => ['index']  ]);
+  Route::get('balance/export', 'BankBalanceController@export')->name('bank.balance.export');
   Route::post('logout', 'Auth\BankLoginController@logout')->name('bank.logout');
   Route::get('login', 'Auth\BankLoginController@showLoginForm')->name('bank.login');
   Route::post('login', 'Auth\BankLoginController@login')->name('bank.login.submit');
@@ -58,7 +61,6 @@ Route::prefix('admin')->group(function() {
   Route::resource('banks','AdminBankController', ['as' => 'admin']);
   Route::resource('donors','AdminDonorController', ['as' => 'admin']);
   Route::resource('wallet','BalanceController', ['as' => 'admin', 'only' => ['create', 'index', 'store']]);
-
   Route::post('logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::get('login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

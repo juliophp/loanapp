@@ -19,6 +19,9 @@
              <li class="nav-item">
                 <a class="nav-link" id="guarantor-tab" data-toggle="tab" href="#guarantor" role="tab" aria-controls="guarantor" aria-selected="false">Guarantor Information</a>
              </li>
+             <li class="nav-item">
+                <a class="nav-link" id="upload-tab" data-toggle="tab" href="#upload" role="tab" aria-controls="upload" aria-selected="false">Upload Photo</a>
+             </li>
           </ul>
           <div class="tab-content text-left" id="myTabContent">
              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -298,7 +301,32 @@
                                @endif
                            </div>
                        </div>
+                       <div class="form-group">
+                           <label for="facebookhandle" class="col-md-4 col-form-label">{{ __('Facebook Handle:') }}</label>
 
+                           <div class="col-md-8">
+                               <input id="facebookhandle" type="text" class="form-control{{ $errors->has('facebookhandle') ? ' is-invalid' : '' }}" name="facebookhandle" value="{{ $std->facebookhandle }}" autofocus>
+
+                               @if ($errors->has('facebookhandle'))
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $errors->first('facebookhandle') }}</strong>
+                                   </span>
+                               @endif
+                           </div>
+                       </div>
+                       <div class="form-group">
+                           <label for="twitterhandle" class="col-md-4 col-form-label">{{ __('Twitter Handle:') }}</label>
+
+                           <div class="col-md-8">
+                               <input id="twitterhandle" type="text" class="form-control{{ $errors->has('twitterhandle') ? ' is-invalid' : '' }}" name="twitterhandle" value="{{ $std->twitterhandle }}" autofocus>
+
+                               @if ($errors->has('twitterhandle'))
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $errors->first('twitterhandle') }}</strong>
+                                   </span>
+                               @endif
+                           </div>
+                       </div>
                    <div class="form-group mb-0">
                        <div class="col-md-8">
                            <button type="submit" class="btn btn-blue">
@@ -541,7 +569,7 @@
 
                 </form>
               </div>
-            <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
+             <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
               <form method="POST" action="{{ route('students.update', Auth::user()->id) }}">
                   @csrf
                   @method('patch')
@@ -643,8 +671,58 @@
                   </div>
 
               </form>
-            </div>
+             </div>
+             <div class="tab-pane fade" id="upload" role="tabpanel" aria-labelledby="upload-tab">
+                <form method="POST" class="row" action="{{ route('students.update', Auth::user()->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
+                    <div class="col-md-6">
+                      <div class="form-group ">
+                          <label for="firstname" class="col-md-4 col-form-label">{{ __('Upload Photo:') }}</label>
 
+                          <div class="col-md-12">
+                              <input id="photo" type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" name="photo"  required autofocus>
+
+                              @if ($errors->has('photo'))
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $errors->first('photo') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="photoid" class="col-md-4 col-form-label ">{{ __('Photo ID:') }}</label>
+
+                          <div class="col-md-12">
+                              <input id="photoid" type="file" class="form-control{{ $errors->has('photoid') ? ' is-invalid' : '' }}" name="photoid"  required autofocus>
+
+                              @if ($errors->has('photoid'))
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $errors->first('photoid') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group mb-0">
+                          <div class="col-md-8">
+                              <button type="submit" class="btn btn-blue">
+                                  {{ __('Save') }}
+                              </button>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 padd-40">
+                      <img src="{{ asset('storage/photos/'.$std->photo) }}" class="rounded-circle" width="200px">
+                      <small>Photo</small>
+                    </div>
+                    <div class="col-md-2 padd-40">
+                      <img src="{{ asset('storage/photos/'.$std->photoid) }}" class="square" width="200px">
+                      <small>Photo ID</small>
+                    </div>
+                </form>
+             </div>
           </div>
 
           @if(session('errors'))

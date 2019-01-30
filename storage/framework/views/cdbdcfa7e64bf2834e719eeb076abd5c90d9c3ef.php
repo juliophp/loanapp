@@ -12,7 +12,7 @@
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Username:')); ?></label>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <input id="username" type="text" class="form-control<?php echo e($errors->has('username') ? ' is-invalid' : ''); ?>" name="username" value="<?php echo e(old('username')); ?>" required autofocus>
 
                                 <?php if($errors->has('username')): ?>
@@ -26,7 +26,7 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Password:')); ?></label>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <input id="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>" name="password" required>
 
                                 <?php if($errors->has('password')): ?>

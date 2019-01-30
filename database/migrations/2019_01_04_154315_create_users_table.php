@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('stateoforigin')->nullable();
             $table->string('phone');
             $table->string('bvn')->nullable();
+            $table->string('photoid')->nullable();
+            $table->string('photo')->nullable();
             $table->string('degreeverified')->nullable();
             $table->string('bvnverified')->nullable();
             $table->string('creditchecked')->nullable();

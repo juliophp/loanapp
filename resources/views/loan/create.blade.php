@@ -46,7 +46,7 @@
                 <div class="col-md-12">
                     <select id="loanpurpose" class="form-control{{ $errors->has('loanpurpose') ? ' is-invalid' : '' }}" name="loanpurpose" required autofocus>
                       <option value="Tuition">Tuition</option>
-                      <option value="Tuition-Stipends">Tuition + Stipends</option>
+                      <option value="Tuition-Stipends">Tuition and Stipends</option>
                       <option value="">Stipends</option>
 
 

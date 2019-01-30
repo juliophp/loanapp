@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\LoanExport;
+use Dompdf\Dompdf;
 use App\Loan;
+use Excel;
 use Alert;
 use Auth;
 
@@ -73,6 +76,11 @@ class BankLoanController extends Controller
         alert()->success('Loan application accepted.');
         return redirect()->route('bank.loans.index');
 
+    }
+
+    public function export()
+    {
+        return \Excel::download(new LoanExport, 'loan.xlsx');
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Loan;
+use App\User;
 use Alert;
 use Auth;
 
@@ -28,9 +29,7 @@ class LoanController extends Controller
     public function create()
     {
         //
-
         return view('loan.create');
-
     }
 
     /**
@@ -41,22 +40,29 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->validate([
-              'loanamount'=>'required|string',
-              'loanpurpose' => 'required|string',
-              'loanyear' => 'required|string',
-            ]);
-            $loan = new Loan();
-            $loan->loanamount = $request->loanamount;
-            $loan->loanpurpose = $request->loanpurpose;
-            $loan->loanyear = $request->loanyear;
-            $loan->user_id = Auth::user()->id;
+        $std = User::findOrFail(Auth::user()->id);
+        if($std->firstname && $std->university_id && $std->addresslineone && $std->guarantor && $std->photo)
+        {
+              $request->validate([
+                'loanamount'=>'required|string',
+                'loanpurpose' => 'required|string',
+                'loanyear' => 'required|string',
+              ]);
+              $loan = new Loan();
+              $loan->loanamount = $request->loanamount;
+              $loan->loanpurpose = $request->loanpurpose;
+              $loan->loanyear = $request->loanyear;
+              $loan->user_id = Auth::user()->id;
 
-            $loan->save();
+              $loan->save();
+              alert()->success('Loan has been created', 'Successful!');
+              return redirect()->route('students.loans');
 
-            alert()->success('Loan has been created', 'Successful!');
-            return redirect()->route('students.loans');
+        }else
+        {
+          alert()->error('Can not apply for loan untill all fields are filled', 'Fill all required fields!');
+          return redirect()->route('students.edit', Auth::user()->id);
+        }
 
 
     }
