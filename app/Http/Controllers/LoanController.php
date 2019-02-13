@@ -55,12 +55,12 @@ class LoanController extends Controller
               $loan->user_id = Auth::user()->id;
 
               $loan->save();
-              alert()->success('Loan has been created', 'Successful!');
+              alert()->success('Loan has been created', 'Successful!')->autoclose('3000');
               return redirect()->route('students.loans');
 
         }else
         {
-          alert()->error('Can not apply for loan untill all fields are filled', 'Fill all required fields!');
+          alert()->error('Can not apply for loan untill all fields are filled', 'Fill all required fields!')->autoclose('3000');
           return redirect()->route('students.edit', Auth::user()->id);
         }
 

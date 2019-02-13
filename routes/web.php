@@ -23,8 +23,17 @@ Route::get('students/loans/{id}', 'StudentLoanController@show')->name('student.l
 
 Route::prefix('bank')->group(function() {
   Route::get('/', 'BankController@index')->name('bank.index');
-  Route::get('/bvn/{id}/', 'BankController@loadbvn')->name('bvn.load');
-  Route::post('/bvn/{id}/{bvn}', 'BankController@verifybvn')->name('bvn.verify');
+  Route::get('/bvn/{id}/', 'BvnController@show')->name('bvn.load');
+  Route::post('/bvn/{id}/{bvn}', 'BvnController@store')->name('bvn.verify');
+  Route::get('/nin/{id}/', 'NimcController@show')->name('nin.load');
+  Route::post('/nin/{id}/{nin}', 'NimcController@store')->name('nin.verify');
+  Route::post('/credit/{id}/{bvn}', 'CreditController@store')->name('credit.verify');
+  Route::get('/wallet/username', 'BankWalletController@username')->name('bank.wallet.username');
+  Route::get('/wallet/statement', 'BankWalletController@ministatement')->name('bank.wallet.statement');
+  Route::get('/wallet/fundtransfer', 'BankWalletController@fundtransfer')->name('bank.wallet.fundtransfer');
+  Route::post('/wallet/fundtransfer', 'BankWalletController@transfer')->name('bank.wallet.transfer');
+  Route::post('/wallet/username', 'BankWalletController@submitusername')->name('bank.username.submit');
+  Route::get('/wallet/balance', 'BankWalletController@checkbalance')->name('bank.wallet.balance');
   Route::get('loans/granted','BankLoanController@granted')->name('bank.loans.granted');
   Route::get('loans/export','BankLoanController@export')->name('bank.loans.export');
   Route::resource('loans', 'BankLoanController', ['as' => 'bank', 'only' => ['index', 'show', 'update']  ]);

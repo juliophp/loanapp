@@ -40,10 +40,10 @@ class StudentLoanController extends Controller
              $loan->ispaid = 1;
              $loan->loanstatus = 'Submitted - Pending Review';
              $loan->save();
-             alert()->success('Loan application successful', 'Successful!');
+             alert()->success('Loan application successful', 'Successful!')->autoclose('3000');
 
            }else
-           alert()->error('Payment not Successful', 'Error!');
+           alert()->error('Payment not Successful', 'Error!')->autoclose('3000');
         }
         return view('loan.show', ['loan' => $loan]);
 

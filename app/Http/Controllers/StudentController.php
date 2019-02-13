@@ -79,6 +79,7 @@ class StudentController extends Controller
           'nationality' => 'string|nullable',
           'stateoforigin' => 'string|nullable',
           'bvn' => 'string|nullable',
+          'nin' => 'string|nullable',
           'facebookhandle' => 'string|nullable',
           'twitterhandle' => 'string|nullable',
           'university' => 'string|nullable',
@@ -161,7 +162,7 @@ class StudentController extends Controller
             $std->photo = $p;
             $std->photoid = $pid;
         }else
-        alert()->error('error uploading picture', 'Error');
+        alert()->error('error uploading picture', 'Error')->autoclose('3000');
 
       }else
       {
@@ -177,10 +178,11 @@ class StudentController extends Controller
         $std->nationality= $request->nationality;
         $std->stateoforigin= $request->stateoforigin;
         $std->bvn = $request->bvn;
+        $std->nin = $request->nin;
         $std->twitterhandle = $request->twitterhandle;
         $std->facebookhandle = $request->facebookhandle;
       }
-      alert()->success('Data updated', 'Successful');
+      alert()->success('Data updated', 'Successful')->autoclose('3000');
       $std->save();
 
 

@@ -194,7 +194,23 @@
                                    </span>
                                @endif
                            </div>
-                       </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="bvn" class="col-md-4 col-form-label">{{ __('National Identification Number:') }}</label>
+
+                            <div class="col-md-8">
+                                <input id="bvn" type="text" class="form-control{{ $errors->has('bvn') ? ' is-invalid' : '' }}" name="nin" value="{{ $std->nin }}" autofocus>
+
+                                @if ($errors->has('nin'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('nin') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
                        <div class="form-group">
                            <label for="accountnumber" class="col-md-4 col-form-label">{{ __('Account Number:') }}</label>
 

@@ -219,7 +219,6 @@
                      <div class="col-centered col-lg-7 z-index">
                         <h2 class="title-h2 color-white">Students, Banks, Donors</h2>
                         <p class="font-p mg-bt-60 color-white">
-                           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
                         </p>
                      </div>
                   </div>
@@ -259,9 +258,8 @@
             <div class="container">
                <div class="row-centered">
                   <div class="col-centered col-lg-12">
-                     <h2 class="title-h2">Features</h2>
+                     <h2 class="title-h2">Log In</h2>
                      <p class="font-p">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br> accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
                      </p>
                      <div class="tabs-content">
                         <ul class="nav nav-tabs">
@@ -368,11 +366,11 @@
                                     <a href="" class="btn btn-blue">Read more</a>
                                  </div>
                               </div>
-                           </div>
--->                        </div>
-                     </div>
+                           </div>-->
+                         </div>
+                    </div>
                   </div>
-               </div>
+              </div>
             </div>
             <!--container-->
          </section>
@@ -427,7 +425,9 @@
                                  </div>
                               </div>
                               <p>
-Thanks to EFC for making my dream come true.</p>                           </div>
+                                Thanks to EFC for making my dream come true.
+                              </p>
+                            </div>
                            <div class="item-inner">
                               <div class="avatar-item">
                                  <div class="avatar-photo">
@@ -519,7 +519,7 @@ Thanks to EFC for making my dream come true.</p>                           </div
                            </div>
                            <div class="text-footer">
                               <p>
-                                 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                The leading education finance company in Nigeria
                               </p>
                            </div>
                            <!-- Newsletter -->

@@ -46,7 +46,7 @@ class UniversityStudentController extends Controller
       $student = User::findorFail($id);
       $student->degreeverified = 1;
       $student->save();
-      alert()->success('Student verified', 'Successful!');
+      alert()->success('Student verified', 'Successful!')->autoclose('3000');
       return redirect()->route('uni.index');
 
     }

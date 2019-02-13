@@ -192,7 +192,23 @@
                                    </span>
                                <?php endif; ?>
                            </div>
-                       </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="bvn" class="col-md-4 col-form-label"><?php echo e(__('National Identification Number:')); ?></label>
+
+                            <div class="col-md-8">
+                                <input id="bvn" type="text" class="form-control<?php echo e($errors->has('bvn') ? ' is-invalid' : ''); ?>" name="nin" value="<?php echo e($std->nin); ?>" autofocus>
+
+                                <?php if($errors->has('nin')): ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($errors->first('nin')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+
+
                        <div class="form-group">
                            <label for="accountnumber" class="col-md-4 col-form-label"><?php echo e(__('Account Number:')); ?></label>
 

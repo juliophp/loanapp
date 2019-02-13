@@ -104,7 +104,7 @@ class DonorStudentController extends Controller
         else
         \Excel::import(new UsersImport, $request->file('file'));
 
-        alert()->success('File has been uploaded.', 'Successful!');
+        alert()->success('File has been uploaded.', 'Successful!')->autoclose('3000');
 
 
     }

@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="<?php echo e(asset('dist/css/AdminLTE.min.css')); ?>">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo e(asset('dist/css/skins/skin-green.min.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('dist/css/skins/skin-purple.min.css')); ?>">
   <!-- Morris chart -->
   <link rel="stylesheet" href="<?php echo e(asset('bower_components/morris.js/morris.css')); ?>">
   <!-- jvectormap -->
@@ -40,7 +40,7 @@
 
   <!-- Google Font -->
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
@@ -131,6 +131,22 @@
             <i class="fa fa-file-o"></i>
             <span>Wallet Balance</span>
           </a>
+        </li>
+
+        <li class="treeview <?php echo e(Request::is('bank/wallet/*') ? 'active' : ''); ?>">
+          <a href="">
+            <i class="fa fa-pie-chart"></i>
+            <span>Your Wallet</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php echo e(Request::is('bank/wallet/username') ? 'active' : ''); ?>"><a href="<?php echo e(route('bank.wallet.username')); ?>"><i class="fa fa-circle-o"></i> Wallet Login</a></li>
+            <li class="<?php echo e(Request::is('bank/wallet/statement') ? 'active' : ''); ?>"><a href="<?php echo e(route('bank.wallet.statement')); ?>"><i class="fa fa-circle-o"></i> Your Statement</a></li>
+            <li class="<?php echo e(Request::is('bank/wallet/fundtransfer') ? 'active' : ''); ?>"><a href="<?php echo e(route('bank.wallet.fundtransfer')); ?>"><i class="fa fa-circle-o"></i> Fund Transfer</a></li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+          </ul>
         </li>
 
         <li class="<?php echo e(Request::is('banks/*') ? 'active' : ''); ?>">

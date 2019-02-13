@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Alert;
-use App\Bank;
-use App\Balance;
+use App\Credit;
 use Illuminate\Http\Request;
 
-class BalanceController extends Controller
+class CreditController extends Controller
 {
 
     public function __construct()
     {
-      $this->middleware('auth:admin');
+      $this->middleware('auth:bank');
     }
     /**
      * Display a listing of the resource.
@@ -23,8 +20,6 @@ class BalanceController extends Controller
     public function index()
     {
         //
-        $balances = Balance::all();
-        return view('admin.ewallet.index', ['balances' => $balances]);
     }
 
     /**
@@ -35,7 +30,6 @@ class BalanceController extends Controller
     public function create()
     {
         //
-        return view('admin.ewallet.create');
     }
 
     /**
@@ -44,30 +38,22 @@ class BalanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
-        if(Auth::user()->balances->count() > 0)
-          $bal = Bank::findOrFail($request->bank)->balances->last()->balance;
-        else
-          $bal = 0;
-        $balance = new Balance;
-        $balance->credit = $request->amount;
-        $balance->balance  = $bal + $request->amount;
-        $balance->bank_id  = $request->bank;
-        $balance->admin_id = Auth::user()->id;
-        $balance->save();
-        alert()->success('Wallet Value Added', 'Successful')->autoclose('3000');
-        return redirect()->route('admin.wallet.index');
+        alert()->error('Unable to verify credit history', 'Error')->autoclose('3000');
+        return redirect()->route('bank.loans.show', $id);
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Balance  $balance
+     * @param  \App\Credit  $credit
      * @return \Illuminate\Http\Response
      */
-    public function show(Balance $balance)
+    public function show(Credit $credit)
     {
         //
     }
@@ -75,10 +61,10 @@ class BalanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Balance  $balance
+     * @param  \App\Credit  $credit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Balance $balance)
+    public function edit(Credit $credit)
     {
         //
     }
@@ -87,10 +73,10 @@ class BalanceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Balance  $balance
+     * @param  \App\Credit  $credit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Balance $balance)
+    public function update(Request $request, Credit $credit)
     {
         //
     }
@@ -98,10 +84,10 @@ class BalanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Balance  $balance
+     * @param  \App\Credit  $credit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Balance $balance)
+    public function destroy(Credit $credit)
     {
         //
     }
