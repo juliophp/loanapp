@@ -564,6 +564,7 @@ class ComposerStaticInit132d066ee18fb25727e45853a8392182
         'App\\Http\\Controllers\\BankWalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/BankWalletController.php',
         'App\\Http\\Controllers\\BvnController' => __DIR__ . '/../..' . '/app/Http/Controllers/BvnController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\CreditController' => __DIR__ . '/../..' . '/app/Http/Controllers/CreditController.php',
         'App\\Http\\Controllers\\DonorController' => __DIR__ . '/../..' . '/app/Http/Controllers/DonorController.php',
         'App\\Http\\Controllers\\DonorStudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/DonorStudentController.php',
         'App\\Http\\Controllers\\GuarantorController' => __DIR__ . '/../..' . '/app/Http/Controllers/GuarantorController.php',

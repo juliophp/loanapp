@@ -77,9 +77,9 @@ class BankLoanController extends Controller
         }
         else if($request->unclaim = "grant")
         {
-          $loan->isclaimed == '1';
           $loan->bank_id = Auth::user()->id;
-          alert()->success('Loan application accepted.')->autoclose('3000');;
+          $loan->loanstatus = "Granted";
+          alert()->success('Loan application accepted.')->autoclose('3000');
 
         }
         $loan->save();

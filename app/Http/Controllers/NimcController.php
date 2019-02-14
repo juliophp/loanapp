@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Nimc;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class NimcController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth:bank');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -55,51 +61,55 @@ class NimcController extends Controller
           if($res->getStatusCode() == 200 && $body->ResponseCode == 00)
           {
             $nimc = new Nimc();
-            $nimc->birthcountry = $body->ResponseNimc->birthcountry;
-            $nimc->birthdate = $body->ResponseNimc->birthdate;
-            $nimc->birthlga = $body->ResponseNimc->birthlga;
-            $nimc->birthstate = $body->ResponseNimc->birthstate;
-            $nimc->documentno = $body->ResponseNimc->documentno;
-            $nimc->educationallevel = $body->ResponseNimc->educationallevel;
-            $nimc->email = $body->ResponseNimc->email;
-            $nimc->emplymentstatus = $body->ResponseNimc->emplymentstatus;
-            $nimc->firstname = $body->ResponseNimc->firstname;
-            $nimc->gender = $body->ResponseNimc->gender;
-            $nimc->heigth = $body->ResponseNimc->heigth;
-            $nimc->maidenname = $body->ResponseNimc->maidenname;
-            $nimc->maritalstatus = $body->ResponseNimc->maritalstatus;
-            $nimc->middlename = $body->ResponseNimc->middlename;
-            $nimc->nin = $body->ResponseNimc->nin;
-            $nimc->nok_address1 = $body->ResponseNimc->nok_address1;
-            $nimc->nok_address2 = $body->ResponseNimc->nok_address2;
-            $nimc->nok_firstname = $body->ResponseNimc->nok_firstname;
-            $nimc->nok_lga = $body->ResponseNimc->nok_lga;
-            $nimc->nok_middlename = $body->ResponseNimc->nok_middlename;
-            $nimc->nok_postalcode = $body->ResponseNimc->nok_postalcode;
-            $nimc->nok_state = $body->ResponseNimc->nok_state;
-            $nimc->nok_surname = $body->ResponseNimc->nok_surname;
-            $nimc->nspokenlang = $body->ResponseNimc->nspokenlang;
-            $nimc->ospokenlang = $body->ResponseNimc->ospokenlang;
-            $nimc->othername = $body->ResponseNimc->othername;
-            $nimc->pfirstname = $body->ResponseNimc->pfirstname;
-            $nimc->pmiddlename = $body->ResponseNimc->pmiddlename;
-            $nimc->profession = $body->ResponseNimc->profession;
-            $nimc->psurname = $body->ResponseNimc->psurname;
-            $nimc->religion = $body->ResponseNimc->religion;
-            $nimc->residence_AdressLine1 = $body->ResponseNimc->residence_AdressLine1;
-            $nimc->residence_AdressLine2 = $body->ResponseNimc->residence_AdressLine2;
-            $nimc->residence_Town = $body->ResponseNimc->residence_Town;
-            $nimc->residence_lga = $body->ResponseNimc->residence_lga;
-            $nimc->residence_postalcode = $body->ResponseNimc->residence_postalcode;
-            $nimc->residence_state = $body->ResponseNimc->residence_state;
-            $nimc->self_origin_lga = $body->ResponseNimc->self_origin_lga;
-            $nimc->self_origin_place = $body->ResponseNimc->self_origin_place;
-            $nimc->self_origin_state = $body->ResponseNimc->self_origin_state;
-            $nimc->signature = $body->ResponseNimc->signature;
-            $nimc->surname = $body->ResponseNimc->surname;
-            $nimc->telephoneno = $body->ResponseNimc->telephoneno;
-            $nimc->title = $body->ResponseNimc->title;
-            $nimc->trackingId = $body->ResponseNimc->trackingId;
+            $nimc->birthcountry = $body->ResponseNIMC->birthcountry;
+            $nimc->birthdate = $body->ResponseNIMC->birthdate;
+            $nimc->birthlga = $body->ResponseNIMC->birthlga;
+            $nimc->birthstate = $body->ResponseNIMC->birthstate;
+            $nimc->centralID = $body->ResponseNIMC->centralID;
+            $nimc->documentno = $body->ResponseNIMC->documentno;
+            $nimc->educationallevel = $body->ResponseNIMC->educationallevel;
+            $nimc->email = $body->ResponseNIMC->email;
+            $nimc->emplymentstatus = $body->ResponseNIMC->emplymentstatus;
+            $nimc->firstname = $body->ResponseNIMC->firstname;
+            $nimc->gender = $body->ResponseNIMC->gender;
+            $nimc->heigth = $body->ResponseNIMC->heigth;
+            $nimc->maidenname = $body->ResponseNIMC->maidenname;
+            $nimc->maritalstatus = $body->ResponseNIMC->maritalstatus;
+            $nimc->middlename = $body->ResponseNIMC->middlename;
+            $nimc->nin = $body->ResponseNIMC->nin;
+            $nimc->nok_address1 = $body->ResponseNIMC->nok_address1;
+            $nimc->nok_address2 = $body->ResponseNIMC->nok_address2;
+            $nimc->nok_firstname = $body->ResponseNIMC->nok_firstname;
+            $nimc->nok_lga = $body->ResponseNIMC->nok_lga;
+            $nimc->nok_middlename = $body->ResponseNIMC->nok_middlename;
+            $nimc->nok_postalcode = $body->ResponseNIMC->nok_postalcode;
+            $nimc->nok_state = $body->ResponseNIMC->nok_state;
+            $nimc->nok_surname = $body->ResponseNIMC->nok_surname;
+            $nimc->nok_town = $body->ResponseNIMC->nok_town;
+            $nimc->nspokenlang = $body->ResponseNIMC->nspokenlang;
+            $nimc->ospokenlang = $body->ResponseNIMC->ospokenlang;
+            $nimc->othername = $body->ResponseNIMC->othername;
+            $nimc->photo = $body->ResponseNIMC->photo;
+            $nimc->pfirstname = $body->ResponseNIMC->pfirstname;
+            $nimc->pmiddlename = $body->ResponseNIMC->pmiddlename;
+            $nimc->profession = $body->ResponseNIMC->profession;
+            $nimc->psurname = $body->ResponseNIMC->psurname;
+            $nimc->religion = $body->ResponseNIMC->religion;
+            $nimc->residence_AdressLine1 = $body->ResponseNIMC->residence_AdressLine1;
+            $nimc->residence_AdressLine2 = $body->ResponseNIMC->residence_AdressLine2;
+            $nimc->residence_Town = $body->ResponseNIMC->residence_Town;
+            $nimc->residence_lga = $body->ResponseNIMC->residence_lga;
+            $nimc->residence_postalcode = $body->ResponseNIMC->residence_postalcode;
+            $nimc->residence_state = $body->ResponseNIMC->residence_state;
+            $nimc->residencestatus = $body->ResponseNIMC->residencestatus;
+            $nimc->self_origin_lga = $body->ResponseNIMC->self_origin_lga;
+            $nimc->self_origin_place = $body->ResponseNIMC->self_origin_place;
+            $nimc->self_origin_state = $body->ResponseNIMC->self_origin_state;
+            $nimc->signature = $body->ResponseNIMC->signature;
+            $nimc->surname = $body->ResponseNIMC->surname;
+            $nimc->telephoneno = $body->ResponseNIMC->telephoneno;
+            $nimc->title = $body->ResponseNIMC->title;
+            $nimc->trackingId = $body->ResponseNIMC->trackingId;
             $nimc->user_id = $id;
             $nimc->bank_id = Auth::user()->id;
             $nimc->save();
@@ -126,7 +136,7 @@ class NimcController extends Controller
     {
         //
         $nin = Nimc::where('user_id', $id)->get();
-        return view('banks.ninreport', ['nin' => $nin]);
+        return view('banks.ninreport', ['nin' => $nin[0]]);
     }
 
     /**

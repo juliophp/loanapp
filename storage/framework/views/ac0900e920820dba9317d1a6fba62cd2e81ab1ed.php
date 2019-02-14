@@ -190,10 +190,14 @@
                     <td></td>
                     <td>
                       <h5>
-                        <form action="<?php echo e(route('credit.verify', ['id' => $loan->user->id, 'bvn' => $loan->user->bvn])); ?>" method="post">
-                          <?php echo csrf_field(); ?>
-                          <button type="submit" name="bvn" value="<?php echo e($loan->user->bvn); ?>" class="btn btn-md btn-success">Verify Credit History</button>
-                        </form>
+                        <?php if(App\Nimc::where('user_id', $loan->user->id)->where('bank_id', Auth::user()->id)->get()->count() > 0): ?>
+                          <a href="<?php echo e(route('credit.report', $loan->user->id)); ?>" class="btn btn-primary btn-md">View Report</a>
+                        <?php else: ?>
+                          <form action="<?php echo e(route('credit.verify', ['id' => $loan->user->id, 'bvn' => $loan->user->bvn])); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <button type="submit" name="bvn" value="<?php echo e($loan->user->bvn); ?>" class="btn btn-md btn-success">Verify Credit History</button>
+                          </form>
+                        <?php endif; ?>
                       </h5>
                     </td>
 

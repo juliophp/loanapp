@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                   <td><h5>Lastname:</h5></td>
-                  <td><h5>{{ $nin->lastname }}</h5></td>
+                  <td><h5>{{ $nin->surname }}</h5></td>
                 </tr>
                 <tr>
                   <td><h5>Birthdate:</h5></td>

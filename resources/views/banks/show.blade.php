@@ -193,10 +193,14 @@
                     <td></td>
                     <td>
                       <h5>
-                        <form action="{{ route('credit.verify', ['id' => $loan->user->id, 'bvn' => $loan->user->bvn])}}" method="post">
-                          @csrf
-                          <button type="submit" name="bvn" value="{{ $loan->user->bvn }}" class="btn btn-md btn-success">Verify Credit History</button>
-                        </form>
+                        @if(App\Nimc::where('user_id', $loan->user->id)->where('bank_id', Auth::user()->id)->get()->count() > 0)
+                          <a href="{{ route('credit.report', $loan->user->id)}}" class="btn btn-primary btn-md">View Report</a>
+                        @else
+                          <form action="{{ route('credit.verify', ['id' => $loan->user->id, 'bvn' => $loan->user->bvn])}}" method="post">
+                            @csrf
+                            <button type="submit" name="bvn" value="{{ $loan->user->bvn }}" class="btn btn-md btn-success">Verify Credit History</button>
+                          </form>
+                        @endif
                       </h5>
                     </td>
 

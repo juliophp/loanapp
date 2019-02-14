@@ -18,4 +18,5 @@ protected $fillable = [
         'residence_state', 'residencestatus', 'self_origin_lga', 'self_origin_place',
         'self_origin_state', 'signature', 'surname', 'telephoneno', 'title', 'trackingId', 'user_id'
       ];
+
 }

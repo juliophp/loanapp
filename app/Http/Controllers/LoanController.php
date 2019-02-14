@@ -55,7 +55,7 @@ class LoanController extends Controller
               $loan->user_id = Auth::user()->id;
 
               $loan->save();
-              alert()->success('Loan has been created', 'Successful!')->autoclose('3000');
+              alert()->success('Application Submitted, Payment Pending', 'Successful!')->autoclose('3000');
               return redirect()->route('students.loans');
 
         }else

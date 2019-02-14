@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="<?php echo e(asset('dist/css/AdminLTE.min.css')); ?>">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo e(asset('dist/css/skins/skin-green.min.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('dist/css/skins/skin-purple.min.css')); ?>">
   <!-- Morris chart -->
   <link rel="stylesheet" href="<?php echo e(asset('bower_components/morris.js/morris.css')); ?>">
   <!-- jvectormap -->
@@ -40,7 +40,7 @@
 
   <!-- Google Font -->
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">

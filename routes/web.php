@@ -28,6 +28,7 @@ Route::prefix('bank')->group(function() {
   Route::get('/nin/{id}/', 'NimcController@show')->name('nin.load');
   Route::post('/nin/{id}/{nin}', 'NimcController@store')->name('nin.verify');
   Route::post('/credit/{id}/{bvn}', 'CreditController@store')->name('credit.verify');
+  Route::get('/credit/{id}/', 'CreditController@show')->name('credit.report');
   Route::get('/wallet/username', 'BankWalletController@username')->name('bank.wallet.username');
   Route::get('/wallet/statement', 'BankWalletController@ministatement')->name('bank.wallet.statement');
   Route::get('/wallet/fundtransfer', 'BankWalletController@fundtransfer')->name('bank.wallet.fundtransfer');

@@ -37,6 +37,7 @@ return array(
     'App\\Http\\Controllers\\BankWalletController' => $baseDir . '/app/Http/Controllers/BankWalletController.php',
     'App\\Http\\Controllers\\BvnController' => $baseDir . '/app/Http/Controllers/BvnController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\CreditController' => $baseDir . '/app/Http/Controllers/CreditController.php',
     'App\\Http\\Controllers\\DonorController' => $baseDir . '/app/Http/Controllers/DonorController.php',
     'App\\Http\\Controllers\\DonorStudentController' => $baseDir . '/app/Http/Controllers/DonorStudentController.php',
     'App\\Http\\Controllers\\GuarantorController' => $baseDir . '/app/Http/Controllers/GuarantorController.php',
