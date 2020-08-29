@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Auth;
+use Alert;
 use App\Loan;
 use App\User;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class UniversityStudentController extends Controller
       $student = User::findorFail($id);
       $student->degreeverified = 1;
       $student->save();
+      alert()->success('Student verified', 'Successful!');
       return redirect()->route('uni.index');
 
     }

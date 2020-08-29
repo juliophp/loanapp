@@ -131,11 +131,16 @@
             <span>Profile</span>
           </a>
         </li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-      </ul>
+
+        <li class="header">Balance</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>
+          @if(Auth::user()->balances->count() > 0)
+            #{{ number_format(Auth::user()->balances->last()->balance,2) }}
+          @else
+            {{ 'No Balance'}}
+          @endif
+        </span></a></li>
+        </ul>
     </section>
     <!-- /.sidebar -->
   </aside>

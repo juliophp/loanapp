@@ -124,8 +124,8 @@
                     <td><h5>{{ $loan->user->bvn }}</h5></td>
                     <td>
                       <h5>
-                        @if(App\bvn::where('user_id', $loan->user->id)->get()->count() > 0)
-                        <a href="#" class="btn btn-primary btn-md">View Report</a>
+                        @if(App\bvn::where('user_id', $loan->user->id)->where('bank_id', Auth::user()->id)->get()->count() > 0)
+                        <a href="{{ route('bvn.load', $loan->user->id)}}" class="btn btn-primary btn-md">View Report</a>
                         @else
                         <form action="{{ route('bvn.verify', ['id' => $loan->user->id, 'bvn' => $loan->user->bvn])}}" method="post">
                           @csrf

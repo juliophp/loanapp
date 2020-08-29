@@ -36,7 +36,11 @@ class CreateUsersTable extends Migration
             $table->string('addresscountry')->nullable();
             $table->string('facebookhandle')->nullable();
             $table->string('twitterhandle')->nullable();
+            $table->string('bank')->nullable();
+            $table->string('accountnumber')->nullable();
             $table->string('program')->nullable();
+            $table->string('matricno')->nullable();
+            $table->string('tuitionfee')->nullable();
             $table->string('yearofgraduation')->nullable();
             $table->string('department')->nullable();
             $table->string('cgpa')->nullable();

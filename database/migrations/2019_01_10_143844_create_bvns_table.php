@@ -18,6 +18,8 @@ class CreateBvnsTable extends Migration
           $table->string('bvn');
           $table->binary('imagebase64');
           $table->binary('basicdetailsbase64');
+          $table->integer('bank_id')->nullable()->unsigned();
+          $table->foreign('bank_id')->references('id')->on('banks');
           $table->integer('user_id')->nullable()->unsigned();
           $table->foreign('user_id')->references('id')->on('users');
           $table->timestamps();

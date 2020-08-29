@@ -23,4 +23,10 @@ class Admin extends Authenticatable
     'email',
   ];
 
+
+  public function balances()
+  {
+    return $this->hasMany('App\Balance');
+  }
+
 }

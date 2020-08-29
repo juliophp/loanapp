@@ -32,6 +32,8 @@ class UsersImport implements ToModel, WithHeadingRow
             'university_id'     => $row['university_id'],
             'bvn'               => $row['bvn'],
             'bvnverified'       => $row['bvnverified'],
+            'bank'              => $row['bank'],
+            'accountnumber'     => $row['accountnumber'],
             'degreeverified'    => $row['degreeverified'],
             'program'           => $row['program'],
             'yearofgraduation'  => $row['yearofgraduation'],

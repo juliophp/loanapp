@@ -18,10 +18,10 @@ class User extends Authenticatable
     protected $fillable = [
         'firstname', 'middlename', 'lastname', 'dob', 'username', 'gender',
         'nationality', 'stateoforigin', 'phone', 'bvn', 'degreeverified',
-        'bvnverified', 'yearofgraduation','creditchecked', 'addresslineone',
-        'addresslinetwo', 'addresscity', 'addressstate', 'addressyears',
-        'facebookhandle', 'program', 'twitterhandle', 'university_id',
-        'department', 'cgpa', 'currentgpa', 'email', 'password',
+        'bvnverified', 'yearofgraduation','creditchecked', 'addresslineone', 'tuitionfee',
+        'addresslinetwo', 'addresscity', 'addressstate', 'addressyears', 'matricno',
+        'facebookhandle', 'program', 'twitterhandle', 'university_id','bank',
+        'accountnumber', 'department', 'cgpa', 'currentgpa', 'email', 'password',
     ];
 
     /**
@@ -32,6 +32,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function guarantor()
+    {
+        return $this->hasOne('App\Guarantor');
+    }
 
     public function loans(){
       return $this->hasMany('App\Loan');

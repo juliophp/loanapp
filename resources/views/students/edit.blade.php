@@ -1,20 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.ui')
 
 @section('content')
-<section class="main-block light-bg">
-<div class="container">
+<div class="container padd-20">
     <div class="row">
+        <div class="col-md-12">
+          <div class="tabs-content">
 
-        <div class="col-md-3">
-          <div class="list-group">
-            <a href="{{ route('home')}}" class="list-group-item list-group-item-action">Home</a>
-            <a href="{{ route('students.edit', Auth::user()->id)}}" class="list-group-item list-group-item-action active">Update Profile</a>
-            <a href="{{ route('loans.create')}}" class="list-group-item list-group-item-action">Apply for a Loan</a>
-            <a href="{{ route('students.loans')}}" class="list-group-item list-group-item-action">View Loan Applications</a>
-
-          </div>
-        </div>
-        <div class="col-md-9">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
              <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Basic Information</a>
@@ -29,13 +20,13 @@
                 <a class="nav-link" id="guarantor-tab" data-toggle="tab" href="#guarantor" role="tab" aria-controls="guarantor" aria-selected="false">Guarantor Information</a>
              </li>
           </ul>
-          <div class="tab-content" id="myTabContent">
+          <div class="tab-content text-left" id="myTabContent">
              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                <form method="POST" action="{{ route('students.update', Auth::user()->id) }}">
                    @csrf
                    @method('patch')
 
-                   <div class="form-group">
+                   <div class="form-group ">
                        <label for="firstname" class="col-md-4 col-form-label">{{ __('Firstname:') }}</label>
 
                        <div class="col-md-8">
@@ -201,11 +192,117 @@
                                @endif
                            </div>
                        </div>
+                       <div class="form-group">
+                           <label for="accountnumber" class="col-md-4 col-form-label">{{ __('Account Number:') }}</label>
+
+                           <div class="col-md-8">
+                               <input id="accountnumber" type="number" class="form-control{{ $errors->has('accountnumber') ? ' is-invalid' : '' }}" name="accountnumber" value="{{ old('accountnumber') }}" required autofocus>
+
+                               @if ($errors->has('accountnumber'))
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $errors->first('accountnumber') }}</strong>
+                                   </span>
+                               @endif
+                           </div>
+                       </div>
+
+                       <div class="form-group">
+                           <label for="bank" class="col-md-4 col-form-label">{{ __('Bank:') }}</label>
+
+                           <div class="col-md-8">
+                               <select id="bank" class="form-control{{ $errors->has('bank') ? ' is-invalid' : '' }}" name="bank" >
+                                 <option value="">---</option>
+                                 <option value="Access Bank">Access Bank</option>
+                                  <option value="Accessmobile">Accessmobile</option>
+                                  <option value="Aso Savings And Loans">Aso Savings And Loans</option>
+                                  <option value="Cellulant">Cellulant</option>
+                                  <option value="Central Bank Of Nigeria">Central Bank Of Nigeria</option>
+                                  <option value="Citibank">Citibank</option>
+                                  <option value="Coronation Merchant Bank">Coronation Merchant Bank</option>
+                                  <option value="Corporetti">Corporetti</option>
+                                  <option value="Covenant Microfinance Bank">Covenant Microfinance Bank</option>
+                                  <option value="Diamond Bank">Diamond Bank</option>
+                                  <option value="Eartholeum (qik Qik)">Eartholeum (qik Qik)</option>
+                                  <option value="Ecobank Nigeria">Ecobank Nigeria</option>
+                                  <option value="Ecomobile">Ecomobile</option>
+                                  <option value="Ekondo Microfinance Bank">Ekondo Microfinance Bank</option>
+                                  <option value="Enterprise Bank">Enterprise Bank</option>
+                                  <option value="Equitorial Trust Bank">Equitorial Trust Bank</option>
+                                  <option value="E-tranzact">E-tranzact</option>
+                                  <option value="Fbn M-money">Fbn M-money</option>
+                                  <option value="Fbn Mortgages">Fbn Mortgages</option>
+                                  <option value="Fets (my Wallet)">Fets (my Wallet)</option>
+                                  <option value="Fidelity Bank">Fidelity Bank</option>
+                                  <option value="Fidelity Mobile">Fidelity Mobile</option>
+                                  <option value="Finatrust Microfinance Bank">Finatrust Microfinance Bank</option>
+                                  <option value="First Bank Of Nigeria">First Bank Of Nigeria</option>
+                                  <option value="First City Monument Bank">First City Monument Bank</option>
+                                  <option value="First Inland Bank">First Inland Bank</option>
+                                  <option value="Fortis Microfinance Bank">Fortis Microfinance Bank</option>
+                                  <option value="Fortis Mobile">Fortis Mobile</option>
+                                  <option value="Fsdh">Fsdh</option>
+                                  <option value="Gt Mobile Money">Gt Mobile Money</option>
+                                  <option value="Guaranty Trust Bank">Guaranty Trust Bank</option>
+                                  <option value="Hedonmark">Hedonmark</option>
+                                  <option value="Heritage Bank">Heritage Bank</option>
+                                  <option value="Imperial Homes Mortgage Bank">Imperial Homes Mortgage Bank</option>
+                                  <option value="Intercontinental Bank">Intercontinental Bank</option>
+                                  <option value="Jaiz Bank">Jaiz Bank</option>
+                                  <option value="Jubilee Life">Jubilee Life</option>
+                                  <option value="Kegow">Kegow</option>
+                                  <option value="Keystone Bank">Keystone Bank</option>
+                                  <option value="Mainstreet Bank">Mainstreet Bank</option>
+                                  <option value="Mimoney (powered By Intellifin)">Mimoney (powered By Intellifin)</option>
+                                  <option value="M-kudi">M-kudi</option>
+                                  <option value="Monetize">Monetize</option>
+                                  <option value="Moneybox">Moneybox</option>
+                                  <option value="New Prudential Bank">New Prudential Bank</option>
+                                  <option value="Npf Mfb">Npf Mfb</option>
+                                  <option value="Oceanic Bank">Oceanic Bank</option>
+                                  <option value="Omoluabi Savings And Loans">Omoluabi Savings And Loans</option>
+                                  <option value="One Finance">One Finance</option>
+                                  <option value="Paga">Paga</option>
+                                  <option value="Page Mfbank">Page Mfbank</option>
+                                  <option value="Parallex">Parallex</option>
+                                  <option value="Parkway (ready Cash)">Parkway (ready Cash)</option>
+                                  <option value="Payattitude Online">Payattitude Online</option>
+                                  <option value="Paycom">Paycom</option>
+                                  <option value="Providus Bank">Providus Bank</option>
+                                  <option value="Safetrust Mortgage Bank">Safetrust Mortgage Bank</option>
+                                  <option value="Seed Capital Microfinance Bank">Seed Capital Microfinance Bank</option>
+                                  <option value="Skye Bank">Skye Bank</option>
+                                  <option value="Stanbic Ibtc Bank">Stanbic Ibtc Bank</option>
+                                  <option value="Stanbic Mobile">Stanbic Mobile</option>
+                                  <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                                  <option value="Sterling Bank">Sterling Bank</option>
+                                  <option value="Sterling Mobile">Sterling Mobile</option>
+                                  <option value="Suntrust">Suntrust</option>
+                                  <option value="Teasy Mobile">Teasy Mobile</option>
+                                  <option value="Trustbond">Trustbond</option>
+                                  <option value="U-mo">U-mo</option>
+                                  <option value="Union Bank Of Nigeria">Union Bank Of Nigeria</option>
+                                  <option value="United Bank For Africa">United Bank For Africa</option>
+                                  <option value="Unity Bank">Unity Bank</option>
+                                  <option value="Vfd Microfinance Bank">Vfd Microfinance Bank</option>
+                                  <option value="Visual Ict">Visual Ict</option>
+                                  <option value="Vtnetwork">Vtnetwork</option>
+                                  <option value="Wema Bank">Wema Bank</option>
+                                  <option value="Zenith Bank">Zenith Bank</option>
+                                  <option value="Zenith Mobile">Zenith Mobile</option>
+                               </select>
+
+                               @if ($errors->has('bank'))
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $errors->first('bank') }}</strong>
+                                   </span>
+                               @endif
+                           </div>
+                       </div>
 
                    <div class="form-group mb-0">
                        <div class="col-md-8">
-                           <button type="submit" class="btn btn-primary">
-                               {{ __('Update Information') }}
+                           <button type="submit" class="btn btn-blue">
+                               {{ __('Save') }}
                            </button>
                        </div>
                    </div>
@@ -216,7 +313,8 @@
                <form method="POST" action="{{ route('students.update', Auth::user()->id) }}">
                    @csrf
                    @method('patch')
-                   <div class="form-group">
+
+                    <div class="form-group">
                        <label for="university" class="col-md-4 col-form-label">{{ __('University:') }}</label>
                        <div class="col-md-8">
                            <select id="university" class="form-control {{ $errors->has('university') ? 'is-invalid' : '' }}" name="university">
@@ -233,13 +331,39 @@
                        </div>
                    </div>
                     <div class="form-group">
+                      <label for="matricno" class="col-md-4 col-form-label ">{{ __('Matric No / Jamb Reg. Number:') }}</label>
+
+                      <div class="col-md-8">
+                          <input id="matricno" type="text" class="form-control{{ $errors->has('matricno') ? ' is-invalid' : '' }}" name="matricno" value="{{ $std->matricno }}" required>
+
+                          @if ($errors->has('matricno'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('matricno') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="tuitionfee" class="col-md-4 col-form-label ">{{ __('Annual Tuition:') }}</label>
+
+                      <div class="col-md-8">
+                          <input id="tuitionfee" type="text" class="form-control{{ $errors->has('tuitionfee') ? ' is-invalid' : '' }}" name="tuitionfee" value="{{ $std->tuitionfee }}" required>
+
+                          @if ($errors->has('tuitionfee'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('tuitionfee') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                    </div>
+                    <div class="form-group">
                         <label for="program" class="col-md-4 col-form-label ">{{ __('Program:') }}</label>
 
                         <div class="col-md-8">
                           <select id="program" class="form-control{{ $errors->has('program') ? ' is-invalid' : '' }}" name="program" >
-                            <option value="bachelors">Bachelors</option>
-                            <option value="masters">Masters</option>
-                            <option value="posstgraduate">Post Graduate</option>
+                            <option value="Bachelors">Bachelors</option>
+                            <option value="Masters">Masters</option>
+                            <option value="Postgraduate">Post Graduate</option>
 
                           </select>
                             @if ($errors->has('program'))
@@ -259,6 +383,8 @@
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
+                            <option value="2022">2024</option>
+                            <option value="2023">2025</option>
 
 
                           </select>
@@ -310,8 +436,8 @@
                     </div>
                     <div class="form-group mb-0">
                         <div class="col-md-8">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Update Information') }}
+                            <button type="submit" class="btn btn-blue">
+                                {{ __('Save') }}
                             </button>
                         </div>
                     </div>
@@ -413,7 +539,7 @@
 
                   <div class="form-group mb-0">
                          <div class="col-md-8">
-                             <button type="submit" class="btn btn-primary">
+                             <button type="submit" class="btn btn-blue">
                                  {{ __('Update Information') }}
                              </button>
                          </div>
@@ -422,7 +548,107 @@
                 </form>
               </div>
             <div class="tab-pane fade" id="guarantor" role="tabpanel" aria-labelledby="guarantor-tab">
-              This tab is for guarantor Information just incase we might need it
+              <form method="POST" action="{{ route('students.update', Auth::user()->id) }}">
+                  @csrf
+                  @method('patch')
+
+                  <div class="form-group ">
+                      <label for="firstname" class="col-md-4 col-form-label">{{ __('Firstname:') }}</label>
+
+                      <div class="col-md-8">
+                          <input id="firstname" type="text" class="form-control{{ $errors->has('gfirstname') ? ' is-invalid' : '' }}" name="gfirstname" value="@if($std->guarantor){{ $std->guarantor->firstname }}@endif" required autofocus>
+
+                          @if ($errors->has('firstname'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('firstname') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="lastname" class="col-md-4 col-form-label ">{{ __('Lastname:') }}</label>
+
+                      <div class="col-md-8">
+                          <input id="lastname" type="text" class="form-control{{ $errors->has('glastname') ? ' is-invalid' : '' }}" name="glastname" value="@if($std->guarantor){{ $std->guarantor->lastname }}@endif" required autofocus>
+
+                          @if ($errors->has('lastname'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('lastname') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+
+
+
+
+                  <div class="form-group">
+                      <label for="phone" class="col-md-4 col-form-label ">{{ __('Phone number:') }}</label>
+
+                      <div class="col-md-8">
+                          <input id="phone" type="text" class="form-control{{ $errors->has('gphone') ? ' is-invalid' : '' }}" name="gphone" value="@if($std->guarantor){{ $std->guarantor->phone }}@endif" required autofocus>
+
+                          @if ($errors->has('phone'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('phone') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="email" class="col-md-4 col-form-label ">{{ __('E-Mail Address') }}</label>
+
+                      <div class="col-md-8">
+                          <input id="email" type="email" class="form-control{{ $errors->has('gemail') ? ' is-invalid' : '' }}" name="gemail" value="@if($std->guarantor){{ $std->guarantor->email }}@endif" required>
+
+                          @if ($errors->has('email'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('email') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="occupation" class="col-md-4 col-form-label ">{{ __('Occupation:') }}</label>
+
+                      <div class="col-md-8">
+                          <input id="occupation" type="text" class="form-control{{ $errors->has('goccupation') ? ' is-invalid' : '' }}" name="goccupation" value="@if($std->guarantor){{ $std->guarantor->occupation }}@endif" required autofocus>
+
+                          @if ($errors->has('occupation'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('occupation') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="address" class="col-md-4 col-form-label ">{{ __('Address:') }}</label>
+
+                      <div class="col-md-8">
+                          <textarea id="address" type="text" class="form-control{{ $errors->has('gaddress') ? ' is-invalid' : '' }}" name="gaddress" required autofocus>@if($std->guarantor){{ $std->guarantor->email }}@endif</textarea>
+
+                          @if ($errors->has('address'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('address') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                  <div class="form-group mb-0">
+                      <div class="col-md-8">
+                          <button type="submit" class="btn btn-blue">
+                              {{ __('Save') }}
+                          </button>
+                      </div>
+                  </div>
+
+              </form>
             </div>
 
           </div>
@@ -435,7 +661,7 @@
           </div>
           @endif
         </div>
+      </div>
     </div>
 </div>
-</section>
 @endsection

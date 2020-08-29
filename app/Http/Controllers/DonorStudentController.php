@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Alert;
 use Excel;
 use App\User;
 use App\Loan;
@@ -98,10 +99,13 @@ class DonorStudentController extends Controller
     public function upload(Request $request)
     {
         //
-        if($request->hasfile('loanfile'))
-          \Excel::import(new LoansImport, $request->file('loanfile'));
+        if($request->hasfile('loanfile')){
+          \Excel::import(new LoansImport, $request->file('loanfile'));}
         else
         \Excel::import(new UsersImport, $request->file('file'));
+
+        alert()->success('File has been uploaded.', 'Successful!');
+
 
     }
 

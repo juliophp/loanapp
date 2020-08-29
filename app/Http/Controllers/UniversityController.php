@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Auth;
+use Alert;
 use App\Loan;
 use App\University;
 use Illuminate\Http\Request;
